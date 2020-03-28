@@ -2,9 +2,9 @@ This is libc.info, produced by makeinfo version 6.5 from libc.texinfo.
 
 This file documents the GNU C Library.
 
-   This is ‘The GNU C Library Reference Manual’, for version 2.30.
+   This is ‘The GNU C Library Reference Manual’, for version 2.31.
 
-   Copyright © 1993–2019 Free Software Foundation, Inc.
+   Copyright © 1993–2020 Free Software Foundation, Inc.
 
    Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -41,6 +41,8 @@ START-INFO-DIR-ENTRY
 * CLK_TCK: (libc)Processor Time.
 * CLOCAL: (libc)Control Modes.
 * CLOCKS_PER_SEC: (libc)CPU Time.
+* CLOCK_MONOTONIC: (libc)Getting the Time.
+* CLOCK_REALTIME: (libc)Getting the Time.
 * COLL_WEIGHTS_MAX: (libc)Utility Limits.
 * CPU_CLR: (libc)CPU Affinity.
 * CPU_ISSET: (libc)CPU Affinity.
@@ -512,8 +514,8 @@ START-INFO-DIR-ENTRY
 * acosl: (libc)Inverse Trig Functions.
 * addmntent: (libc)mtab.
 * addseverity: (libc)Adding Severity Classes.
-* adjtime: (libc)High-Resolution Calendar.
-* adjtimex: (libc)High-Resolution Calendar.
+* adjtime: (libc)Setting and Adjusting the Time.
+* adjtimex: (libc)Setting and Adjusting the Time.
 * aio_cancel64: (libc)Cancel AIO Operations.
 * aio_cancel: (libc)Cancel AIO Operations.
 * aio_error64: (libc)Status of AIO Operations.
@@ -695,6 +697,9 @@ START-INFO-DIR-ENTRY
 * clearerr: (libc)Error Recovery.
 * clearerr_unlocked: (libc)Error Recovery.
 * clock: (libc)CPU Time.
+* clock_getres: (libc)Getting the Time.
+* clock_gettime: (libc)Getting the Time.
+* clock_settime: (libc)Setting and Adjusting the Time.
 * clog10: (libc)Exponents and Logarithms.
 * clog10f: (libc)Exponents and Logarithms.
 * clog10fN: (libc)Exponents and Logarithms.
@@ -790,7 +795,7 @@ START-INFO-DIR-ENTRY
 * dcngettext: (libc)Advanced gettext functions.
 * ddivl: (libc)Misc FP Arithmetic.
 * dgettext: (libc)Translation with gettext.
-* difftime: (libc)Elapsed Time.
+* difftime: (libc)Calculating Elapsed Time.
 * dirfd: (libc)Opening a Directory.
 * dirname: (libc)Finding Tokens in a String.
 * div: (libc)Integer Division.
@@ -1153,7 +1158,7 @@ START-INFO-DIR-ENTRY
 * getsubopt: (libc)Suboptions.
 * gettext: (libc)Translation with gettext.
 * gettid: (libc)Process Identification.
-* gettimeofday: (libc)High-Resolution Calendar.
+* gettimeofday: (libc)Getting the Time.
 * getuid: (libc)Reading Persona.
 * getumask: (libc)Setting Permissions.
 * getutent: (libc)Manipulating the Database.
@@ -1486,8 +1491,8 @@ START-INFO-DIR-ENTRY
 * nrand48_r: (libc)SVID Random.
 * ntohl: (libc)Byte Order.
 * ntohs: (libc)Byte Order.
-* ntp_adjtime: (libc)High Accuracy Clock.
-* ntp_gettime: (libc)High Accuracy Clock.
+* ntp_adjtime: (libc)Setting and Adjusting the Time.
+* ntp_gettime: (libc)Setting and Adjusting the Time.
 * obstack_1grow: (libc)Growing Objects.
 * obstack_1grow_fast: (libc)Extra Fast Growing.
 * obstack_alignment_mask: (libc)Obstacks Data Alignment.
@@ -1551,6 +1556,7 @@ START-INFO-DIR-ENTRY
 * printf_size: (libc)Predefined Printf Handlers.
 * printf_size_info: (libc)Predefined Printf Handlers.
 * psignal: (libc)Signal Messages.
+* pthread_clockjoin_np: (libc)Default Thread Attributes.
 * pthread_cond_clockwait: (libc)Default Thread Attributes.
 * pthread_getattr_default_np: (libc)Default Thread Attributes.
 * pthread_getspecific: (libc)Thread-specific Data.
@@ -1560,6 +1566,8 @@ START-INFO-DIR-ENTRY
 * pthread_rwlock_clockwrlock: (libc)Default Thread Attributes.
 * pthread_setattr_default_np: (libc)Default Thread Attributes.
 * pthread_setspecific: (libc)Thread-specific Data.
+* pthread_timedjoin_np: (libc)Default Thread Attributes.
+* pthread_tryjoin_np: (libc)Default Thread Attributes.
 * ptsname: (libc)Allocation.
 * ptsname_r: (libc)Allocation.
 * putc: (libc)Simple Output.
@@ -1735,7 +1743,7 @@ START-INFO-DIR-ENTRY
 * setsockopt: (libc)Socket Option Functions.
 * setstate: (libc)BSD Random.
 * setstate_r: (libc)BSD Random.
-* settimeofday: (libc)High-Resolution Calendar.
+* settimeofday: (libc)Setting and Adjusting the Time.
 * setuid: (libc)Setting User ID.
 * setutent: (libc)Manipulating the Database.
 * setutxent: (libc)XPG Functions.
@@ -1800,7 +1808,7 @@ START-INFO-DIR-ENTRY
 * ssignal: (libc)Basic Signal Handling.
 * stat64: (libc)Reading Attributes.
 * stat: (libc)Reading Attributes.
-* stime: (libc)Simple Calendar Time.
+* stime: (libc)Setting and Adjusting the Time.
 * stpcpy: (libc)Copying Strings and Arrays.
 * stpncpy: (libc)Truncating Strings.
 * strcasecmp: (libc)String/Array Comparison.
@@ -1907,7 +1915,7 @@ START-INFO-DIR-ENTRY
 * thrd_join: (libc)ISO C Thread Management.
 * thrd_sleep: (libc)ISO C Thread Management.
 * thrd_yield: (libc)ISO C Thread Management.
-* time: (libc)Simple Calendar Time.
+* time: (libc)Getting the Time.
 * timegm: (libc)Broken-down Time.
 * timelocal: (libc)Broken-down Time.
 * times: (libc)Processor Time.
@@ -2082,6 +2090,205 @@ START-INFO-DIR-ENTRY
 * ynfNx: (libc)Special Functions.
 * ynl: (libc)Special Functions.
 END-INFO-DIR-ENTRY
+
+
+File: libc.info,  Node: Atomic Data Access,  Prev: Nonreentrancy,  Up: Defining Handlers
+
+24.4.7 Atomic Data Access and Signal Handling
+---------------------------------------------
+
+Whether the data in your application concerns atoms, or mere text, you
+have to be careful about the fact that access to a single datum is not
+necessarily “atomic”.  This means that it can take more than one
+instruction to read or write a single object.  In such cases, a signal
+handler might be invoked in the middle of reading or writing the object.
+
+   There are three ways you can cope with this problem.  You can use
+data types that are always accessed atomically; you can carefully
+arrange that nothing untoward happens if an access is interrupted, or
+you can block all signals around any access that had better not be
+interrupted (*note Blocking Signals::).
+
+* Menu:
+
+* Non-atomic Example::		A program illustrating interrupted access.
+* Types: Atomic Types.		Data types that guarantee no interruption.
+* Usage: Atomic Usage.		Proving that interruption is harmless.
+
+
+File: libc.info,  Node: Non-atomic Example,  Next: Atomic Types,  Up: Atomic Data Access
+
+24.4.7.1 Problems with Non-Atomic Access
+........................................
+
+Here is an example which shows what can happen if a signal handler runs
+in the middle of modifying a variable.  (Interrupting the reading of a
+variable can also lead to paradoxical results, but here we only show
+writing.)
+
+     #include <signal.h>
+     #include <stdio.h>
+
+     volatile struct two_words { int a, b; } memory;
+
+     void
+     handler(int signum)
+     {
+        printf ("%d,%d\n", memory.a, memory.b);
+        alarm (1);
+     }
+
+     int
+     main (void)
+     {
+        static struct two_words zeros = { 0, 0 }, ones = { 1, 1 };
+        signal (SIGALRM, handler);
+        memory = zeros;
+        alarm (1);
+        while (1)
+          {
+            memory = zeros;
+            memory = ones;
+          }
+     }
+
+   This program fills ‘memory’ with zeros, ones, zeros, ones,
+alternating forever; meanwhile, once per second, the alarm signal
+handler prints the current contents.  (Calling ‘printf’ in the handler
+is safe in this program because it is certainly not being called outside
+the handler when the signal happens.)
+
+   Clearly, this program can print a pair of zeros or a pair of ones.
+But that’s not all it can do!  On most machines, it takes several
+instructions to store a new value in ‘memory’, and the value is stored
+one word at a time.  If the signal is delivered in between these
+instructions, the handler might find that ‘memory.a’ is zero and
+‘memory.b’ is one (or vice versa).
+
+   On some machines it may be possible to store a new value in ‘memory’
+with just one instruction that cannot be interrupted.  On these
+machines, the handler will always print two zeros or two ones.
+
+
+File: libc.info,  Node: Atomic Types,  Next: Atomic Usage,  Prev: Non-atomic Example,  Up: Atomic Data Access
+
+24.4.7.2 Atomic Types
+.....................
+
+To avoid uncertainty about interrupting access to a variable, you can
+use a particular data type for which access is always atomic:
+‘sig_atomic_t’.  Reading and writing this data type is guaranteed to
+happen in a single instruction, so there’s no way for a handler to run
+“in the middle” of an access.
+
+   The type ‘sig_atomic_t’ is always an integer data type, but which one
+it is, and how many bits it contains, may vary from machine to machine.
+
+ -- Data Type: sig_atomic_t
+
+     This is an integer data type.  Objects of this type are always
+     accessed atomically.
+
+   In practice, you can assume that ‘int’ is atomic.  You can also
+assume that pointer types are atomic; that is very convenient.  Both of
+these assumptions are true on all of the machines that the GNU C Library
+supports and on all POSIX systems we know of.
+
+
+File: libc.info,  Node: Atomic Usage,  Prev: Atomic Types,  Up: Atomic Data Access
+
+24.4.7.3 Atomic Usage Patterns
+..............................
+
+Certain patterns of access avoid any problem even if an access is
+interrupted.  For example, a flag which is set by the handler, and
+tested and cleared by the main program from time to time, is always safe
+even if access actually requires two instructions.  To show that this is
+so, we must consider each access that could be interrupted, and show
+that there is no problem if it is interrupted.
+
+   An interrupt in the middle of testing the flag is safe because either
+it’s recognized to be nonzero, in which case the precise value doesn’t
+matter, or it will be seen to be nonzero the next time it’s tested.
+
+   An interrupt in the middle of clearing the flag is no problem because
+either the value ends up zero, which is what happens if a signal comes
+in just before the flag is cleared, or the value ends up nonzero, and
+subsequent events occur as if the signal had come in just after the flag
+was cleared.  As long as the code handles both of these cases properly,
+it can also handle a signal in the middle of clearing the flag.  (This
+is an example of the sort of reasoning you need to do to figure out
+whether non-atomic usage is safe.)
+
+   Sometimes you can ensure uninterrupted access to one object by
+protecting its use with another object, perhaps one whose type
+guarantees atomicity.  *Note Merged Signals::, for an example.
+
+
+File: libc.info,  Node: Interrupted Primitives,  Next: Generating Signals,  Prev: Defining Handlers,  Up: Signal Handling
+
+24.5 Primitives Interrupted by Signals
+======================================
+
+A signal can arrive and be handled while an I/O primitive such as ‘open’
+or ‘read’ is waiting for an I/O device.  If the signal handler returns,
+the system faces the question: what should happen next?
+
+   POSIX specifies one approach: make the primitive fail right away.
+The error code for this kind of failure is ‘EINTR’.  This is flexible,
+but usually inconvenient.  Typically, POSIX applications that use signal
+handlers must check for ‘EINTR’ after each library function that can
+return it, in order to try the call again.  Often programmers forget to
+check, which is a common source of error.
+
+   The GNU C Library provides a convenient way to retry a call after a
+temporary failure, with the macro ‘TEMP_FAILURE_RETRY’:
+
+ -- Macro: TEMP_FAILURE_RETRY (EXPRESSION)
+
+     This macro evaluates EXPRESSION once, and examines its value as
+     type ‘long int’.  If the value equals ‘-1’, that indicates a
+     failure and ‘errno’ should be set to show what kind of failure.  If
+     it fails and reports error code ‘EINTR’, ‘TEMP_FAILURE_RETRY’
+     evaluates it again, and over and over until the result is not a
+     temporary failure.
+
+     The value returned by ‘TEMP_FAILURE_RETRY’ is whatever value
+     EXPRESSION produced.
+
+   BSD avoids ‘EINTR’ entirely and provides a more convenient approach:
+to restart the interrupted primitive, instead of making it fail.  If you
+choose this approach, you need not be concerned with ‘EINTR’.
+
+   You can choose either approach with the GNU C Library.  If you use
+‘sigaction’ to establish a signal handler, you can specify how that
+handler should behave.  If you specify the ‘SA_RESTART’ flag, return
+from that handler will resume a primitive; otherwise, return from that
+handler will cause ‘EINTR’.  *Note Flags for Sigaction::.
+
+   Another way to specify the choice is with the ‘siginterrupt’
+function.  *Note BSD Signal Handling::.
+
+   When you don’t specify with ‘sigaction’ or ‘siginterrupt’ what a
+particular handler should do, it uses a default choice.  The default
+choice in the GNU C Library is to make primitives fail with ‘EINTR’.
+
+   The description of each primitive affected by this issue lists
+‘EINTR’ among the error codes it can return.
+
+   There is one situation where resumption never happens no matter which
+choice you make: when a data-transfer function such as ‘read’ or ‘write’
+is interrupted by a signal after transferring part of the data.  In this
+case, the function returns the number of bytes already transferred,
+indicating partial success.
+
+   This might at first appear to cause unreliable behavior on
+record-oriented devices (including datagram sockets; *note Datagrams::),
+where splitting one ‘read’ or ‘write’ into two would read or write two
+records.  Actually, there is no problem, because interruption after a
+partial transfer cannot happen on such devices; they always transfer an
+entire record in one burst, with no waiting once data transfer has
+started.
 
 
 File: libc.info,  Node: Generating Signals,  Next: Blocking Signals,  Prev: Interrupted Primitives,  Up: Signal Handling
@@ -6249,11 +6456,6 @@ for this function is in ‘stdlib.h’.
      ‘SIGABRT’ signal, and your program can include a handler to
      intercept this signal; see *note Signal Handling::.
 
-   *Future Change Warning:* Proposed Federal censorship regulations may
-prohibit us from giving you information about the possibility of calling
-this function.  We would be required to say that this is not an
-acceptable way of terminating a program.
-
 
 File: libc.info,  Node: Termination Internals,  Prev: Aborting a Program,  Up: Program Termination
 
@@ -7290,279 +7492,4 @@ stopped jobs and switch jobs between foreground and background.
 
    *Note Access to the Terminal::, for more information about I/O to the
 controlling terminal.
-
-
-File: libc.info,  Node: Controlling Terminal,  Next: Access to the Terminal,  Prev: Concepts of Job Control,  Up: Job Control
-
-28.2 Controlling Terminal of a Process
-======================================
-
-One of the attributes of a process is its controlling terminal.  Child
-processes created with ‘fork’ inherit the controlling terminal from
-their parent process.  In this way, all the processes in a session
-inherit the controlling terminal from the session leader.  A session
-leader that has control of a terminal is called the “controlling
-process” of that terminal.
-
-   You generally do not need to worry about the exact mechanism used to
-allocate a controlling terminal to a session, since it is done for you
-by the system when you log in.
-
-   An individual process disconnects from its controlling terminal when
-it calls ‘setsid’ to become the leader of a new session.  *Note Process
-Group Functions::.
-
-
-File: libc.info,  Node: Access to the Terminal,  Next: Orphaned Process Groups,  Prev: Controlling Terminal,  Up: Job Control
-
-28.3 Access to the Controlling Terminal
-=======================================
-
-Processes in the foreground job of a controlling terminal have
-unrestricted access to that terminal; background processes do not.  This
-section describes in more detail what happens when a process in a
-background job tries to access its controlling terminal.
-
-   When a process in a background job tries to read from its controlling
-terminal, the process group is usually sent a ‘SIGTTIN’ signal.  This
-normally causes all of the processes in that group to stop (unless they
-handle the signal and don’t stop themselves).  However, if the reading
-process is ignoring or blocking this signal, then ‘read’ fails with an
-‘EIO’ error instead.
-
-   Similarly, when a process in a background job tries to write to its
-controlling terminal, the default behavior is to send a ‘SIGTTOU’ signal
-to the process group.  However, the behavior is modified by the ‘TOSTOP’
-bit of the local modes flags (*note Local Modes::).  If this bit is not
-set (which is the default), then writing to the controlling terminal is
-always permitted without sending a signal.  Writing is also permitted if
-the ‘SIGTTOU’ signal is being ignored or blocked by the writing process.
-
-   Most other terminal operations that a program can do are treated as
-reading or as writing.  (The description of each operation should say
-which.)
-
-   For more information about the primitive ‘read’ and ‘write’
-functions, see *note I/O Primitives::.
-
-
-File: libc.info,  Node: Orphaned Process Groups,  Next: Implementing a Shell,  Prev: Access to the Terminal,  Up: Job Control
-
-28.4 Orphaned Process Groups
-============================
-
-When a controlling process terminates, its terminal becomes free and a
-new session can be established on it.  (In fact, another user could log
-in on the terminal.)  This could cause a problem if any processes from
-the old session are still trying to use that terminal.
-
-   To prevent problems, process groups that continue running even after
-the session leader has terminated are marked as “orphaned process
-groups”.
-
-   When a process group becomes an orphan, its processes are sent a
-‘SIGHUP’ signal.  Ordinarily, this causes the processes to terminate.
-However, if a program ignores this signal or establishes a handler for
-it (*note Signal Handling::), it can continue running as in the orphan
-process group even after its controlling process terminates; but it
-still cannot access the terminal any more.
-
-
-File: libc.info,  Node: Implementing a Shell,  Next: Functions for Job Control,  Prev: Orphaned Process Groups,  Up: Job Control
-
-28.5 Implementing a Job Control Shell
-=====================================
-
-This section describes what a shell must do to implement job control, by
-presenting an extensive sample program to illustrate the concepts
-involved.
-
-* Menu:
-
-* Data Structures::             Introduction to the sample shell.
-* Initializing the Shell::      What the shell must do to take
-				 responsibility for job control.
-* Launching Jobs::              Creating jobs to execute commands.
-* Foreground and Background::   Putting a job in foreground of background.
-* Stopped and Terminated Jobs::  Reporting job status.
-* Continuing Stopped Jobs::     How to continue a stopped job in
-				 the foreground or background.
-* Missing Pieces::              Other parts of the shell.
-
-
-File: libc.info,  Node: Data Structures,  Next: Initializing the Shell,  Up: Implementing a Shell
-
-28.5.1 Data Structures for the Shell
-------------------------------------
-
-All of the program examples included in this chapter are part of a
-simple shell program.  This section presents data structures and utility
-functions which are used throughout the example.
-
-   The sample shell deals mainly with two data structures.  The ‘job’
-type contains information about a job, which is a set of subprocesses
-linked together with pipes.  The ‘process’ type holds information about
-a single subprocess.  Here are the relevant data structure declarations:
-
-     /* A process is a single process.  */
-     typedef struct process
-     {
-       struct process *next;       /* next process in pipeline */
-       char **argv;                /* for exec */
-       pid_t pid;                  /* process ID */
-       char completed;             /* true if process has completed */
-       char stopped;               /* true if process has stopped */
-       int status;                 /* reported status value */
-     } process;
-
-     /* A job is a pipeline of processes.  */
-     typedef struct job
-     {
-       struct job *next;           /* next active job */
-       char *command;              /* command line, used for messages */
-       process *first_process;     /* list of processes in this job */
-       pid_t pgid;                 /* process group ID */
-       char notified;              /* true if user told about stopped job */
-       struct termios tmodes;      /* saved terminal modes */
-       int stdin, stdout, stderr;  /* standard i/o channels */
-     } job;
-
-     /* The active jobs are linked into a list.  This is its head.   */
-     job *first_job = NULL;
-
-   Here are some utility functions that are used for operating on ‘job’
-objects.
-
-     /* Find the active job with the indicated PGID.  */
-     job *
-     find_job (pid_t pgid)
-     {
-       job *j;
-
-       for (j = first_job; j; j = j->next)
-         if (j->pgid == pgid)
-           return j;
-       return NULL;
-     }
-
-     /* Return true if all processes in the job have stopped or completed.  */
-     int
-     job_is_stopped (job *j)
-     {
-       process *p;
-
-       for (p = j->first_process; p; p = p->next)
-         if (!p->completed && !p->stopped)
-           return 0;
-       return 1;
-     }
-
-     /* Return true if all processes in the job have completed.  */
-     int
-     job_is_completed (job *j)
-     {
-       process *p;
-
-       for (p = j->first_process; p; p = p->next)
-         if (!p->completed)
-           return 0;
-       return 1;
-     }
-
-
-File: libc.info,  Node: Initializing the Shell,  Next: Launching Jobs,  Prev: Data Structures,  Up: Implementing a Shell
-
-28.5.2 Initializing the Shell
------------------------------
-
-When a shell program that normally performs job control is started, it
-has to be careful in case it has been invoked from another shell that is
-already doing its own job control.
-
-   A subshell that runs interactively has to ensure that it has been
-placed in the foreground by its parent shell before it can enable job
-control itself.  It does this by getting its initial process group ID
-with the ‘getpgrp’ function, and comparing it to the process group ID of
-the current foreground job associated with its controlling terminal
-(which can be retrieved using the ‘tcgetpgrp’ function).
-
-   If the subshell is not running as a foreground job, it must stop
-itself by sending a ‘SIGTTIN’ signal to its own process group.  It may
-not arbitrarily put itself into the foreground; it must wait for the
-user to tell the parent shell to do this.  If the subshell is continued
-again, it should repeat the check and stop itself again if it is still
-not in the foreground.
-
-   Once the subshell has been placed into the foreground by its parent
-shell, it can enable its own job control.  It does this by calling
-‘setpgid’ to put itself into its own process group, and then calling
-‘tcsetpgrp’ to place this process group into the foreground.
-
-   When a shell enables job control, it should set itself to ignore all
-the job control stop signals so that it doesn’t accidentally stop
-itself.  You can do this by setting the action for all the stop signals
-to ‘SIG_IGN’.
-
-   A subshell that runs non-interactively cannot and should not support
-job control.  It must leave all processes it creates in the same process
-group as the shell itself; this allows the non-interactive shell and its
-child processes to be treated as a single job by the parent shell.  This
-is easy to do—just don’t use any of the job control primitives—but you
-must remember to make the shell do it.
-
-   Here is the initialization code for the sample shell that shows how
-to do all of this.
-
-     /* Keep track of attributes of the shell.  */
-
-     #include <sys/types.h>
-     #include <termios.h>
-     #include <unistd.h>
-
-     pid_t shell_pgid;
-     struct termios shell_tmodes;
-     int shell_terminal;
-     int shell_is_interactive;
-
-
-     /* Make sure the shell is running interactively as the foreground job
-        before proceeding. */
-
-     void
-     init_shell ()
-     {
-
-       /* See if we are running interactively.  */
-       shell_terminal = STDIN_FILENO;
-       shell_is_interactive = isatty (shell_terminal);
-
-       if (shell_is_interactive)
-         {
-           /* Loop until we are in the foreground.  */
-           while (tcgetpgrp (shell_terminal) != (shell_pgid = getpgrp ()))
-             kill (- shell_pgid, SIGTTIN);
-
-           /* Ignore interactive and job-control signals.  */
-           signal (SIGINT, SIG_IGN);
-           signal (SIGQUIT, SIG_IGN);
-           signal (SIGTSTP, SIG_IGN);
-           signal (SIGTTIN, SIG_IGN);
-           signal (SIGTTOU, SIG_IGN);
-           signal (SIGCHLD, SIG_IGN);
-
-           /* Put ourselves in our own process group.  */
-           shell_pgid = getpid ();
-           if (setpgid (shell_pgid, shell_pgid) < 0)
-             {
-               perror ("Couldn't put the shell in its own process group");
-               exit (1);
-             }
-
-           /* Grab control of the terminal.  */
-           tcsetpgrp (shell_terminal, shell_pgid);
-
-           /* Save default terminal attributes for shell.  */
-           tcgetattr (shell_terminal, &shell_tmodes);
-         }
-     }
 

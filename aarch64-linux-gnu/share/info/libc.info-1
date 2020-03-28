@@ -2,9 +2,9 @@ This is libc.info, produced by makeinfo version 6.5 from libc.texinfo.
 
 This file documents the GNU C Library.
 
-   This is ‘The GNU C Library Reference Manual’, for version 2.30.
+   This is ‘The GNU C Library Reference Manual’, for version 2.31.
 
-   Copyright © 1993–2019 Free Software Foundation, Inc.
+   Copyright © 1993–2020 Free Software Foundation, Inc.
 
    Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -41,6 +41,8 @@ START-INFO-DIR-ENTRY
 * CLK_TCK: (libc)Processor Time.
 * CLOCAL: (libc)Control Modes.
 * CLOCKS_PER_SEC: (libc)CPU Time.
+* CLOCK_MONOTONIC: (libc)Getting the Time.
+* CLOCK_REALTIME: (libc)Getting the Time.
 * COLL_WEIGHTS_MAX: (libc)Utility Limits.
 * CPU_CLR: (libc)CPU Affinity.
 * CPU_ISSET: (libc)CPU Affinity.
@@ -512,8 +514,8 @@ START-INFO-DIR-ENTRY
 * acosl: (libc)Inverse Trig Functions.
 * addmntent: (libc)mtab.
 * addseverity: (libc)Adding Severity Classes.
-* adjtime: (libc)High-Resolution Calendar.
-* adjtimex: (libc)High-Resolution Calendar.
+* adjtime: (libc)Setting and Adjusting the Time.
+* adjtimex: (libc)Setting and Adjusting the Time.
 * aio_cancel64: (libc)Cancel AIO Operations.
 * aio_cancel: (libc)Cancel AIO Operations.
 * aio_error64: (libc)Status of AIO Operations.
@@ -695,6 +697,9 @@ START-INFO-DIR-ENTRY
 * clearerr: (libc)Error Recovery.
 * clearerr_unlocked: (libc)Error Recovery.
 * clock: (libc)CPU Time.
+* clock_getres: (libc)Getting the Time.
+* clock_gettime: (libc)Getting the Time.
+* clock_settime: (libc)Setting and Adjusting the Time.
 * clog10: (libc)Exponents and Logarithms.
 * clog10f: (libc)Exponents and Logarithms.
 * clog10fN: (libc)Exponents and Logarithms.
@@ -790,7 +795,7 @@ START-INFO-DIR-ENTRY
 * dcngettext: (libc)Advanced gettext functions.
 * ddivl: (libc)Misc FP Arithmetic.
 * dgettext: (libc)Translation with gettext.
-* difftime: (libc)Elapsed Time.
+* difftime: (libc)Calculating Elapsed Time.
 * dirfd: (libc)Opening a Directory.
 * dirname: (libc)Finding Tokens in a String.
 * div: (libc)Integer Division.
@@ -1153,7 +1158,7 @@ START-INFO-DIR-ENTRY
 * getsubopt: (libc)Suboptions.
 * gettext: (libc)Translation with gettext.
 * gettid: (libc)Process Identification.
-* gettimeofday: (libc)High-Resolution Calendar.
+* gettimeofday: (libc)Getting the Time.
 * getuid: (libc)Reading Persona.
 * getumask: (libc)Setting Permissions.
 * getutent: (libc)Manipulating the Database.
@@ -1486,8 +1491,8 @@ START-INFO-DIR-ENTRY
 * nrand48_r: (libc)SVID Random.
 * ntohl: (libc)Byte Order.
 * ntohs: (libc)Byte Order.
-* ntp_adjtime: (libc)High Accuracy Clock.
-* ntp_gettime: (libc)High Accuracy Clock.
+* ntp_adjtime: (libc)Setting and Adjusting the Time.
+* ntp_gettime: (libc)Setting and Adjusting the Time.
 * obstack_1grow: (libc)Growing Objects.
 * obstack_1grow_fast: (libc)Extra Fast Growing.
 * obstack_alignment_mask: (libc)Obstacks Data Alignment.
@@ -1551,6 +1556,7 @@ START-INFO-DIR-ENTRY
 * printf_size: (libc)Predefined Printf Handlers.
 * printf_size_info: (libc)Predefined Printf Handlers.
 * psignal: (libc)Signal Messages.
+* pthread_clockjoin_np: (libc)Default Thread Attributes.
 * pthread_cond_clockwait: (libc)Default Thread Attributes.
 * pthread_getattr_default_np: (libc)Default Thread Attributes.
 * pthread_getspecific: (libc)Thread-specific Data.
@@ -1560,6 +1566,8 @@ START-INFO-DIR-ENTRY
 * pthread_rwlock_clockwrlock: (libc)Default Thread Attributes.
 * pthread_setattr_default_np: (libc)Default Thread Attributes.
 * pthread_setspecific: (libc)Thread-specific Data.
+* pthread_timedjoin_np: (libc)Default Thread Attributes.
+* pthread_tryjoin_np: (libc)Default Thread Attributes.
 * ptsname: (libc)Allocation.
 * ptsname_r: (libc)Allocation.
 * putc: (libc)Simple Output.
@@ -1735,7 +1743,7 @@ START-INFO-DIR-ENTRY
 * setsockopt: (libc)Socket Option Functions.
 * setstate: (libc)BSD Random.
 * setstate_r: (libc)BSD Random.
-* settimeofday: (libc)High-Resolution Calendar.
+* settimeofday: (libc)Setting and Adjusting the Time.
 * setuid: (libc)Setting User ID.
 * setutent: (libc)Manipulating the Database.
 * setutxent: (libc)XPG Functions.
@@ -1800,7 +1808,7 @@ START-INFO-DIR-ENTRY
 * ssignal: (libc)Basic Signal Handling.
 * stat64: (libc)Reading Attributes.
 * stat: (libc)Reading Attributes.
-* stime: (libc)Simple Calendar Time.
+* stime: (libc)Setting and Adjusting the Time.
 * stpcpy: (libc)Copying Strings and Arrays.
 * stpncpy: (libc)Truncating Strings.
 * strcasecmp: (libc)String/Array Comparison.
@@ -1907,7 +1915,7 @@ START-INFO-DIR-ENTRY
 * thrd_join: (libc)ISO C Thread Management.
 * thrd_sleep: (libc)ISO C Thread Management.
 * thrd_yield: (libc)ISO C Thread Management.
-* time: (libc)Simple Calendar Time.
+* time: (libc)Getting the Time.
 * timegm: (libc)Broken-down Time.
 * timelocal: (libc)Broken-down Time.
 * times: (libc)Processor Time.
@@ -2089,7 +2097,7 @@ File: libc.info,  Node: Top,  Next: Introduction,  Prev: (dir),  Up: (dir)
 Main Menu
 *********
 
-This is ‘The GNU C Library Reference Manual’, for Version 2.30 of the
+This is ‘The GNU C Library Reference Manual’, for Version 2.31 of the
 GNU C Library.
 
 * Menu:
@@ -2944,7 +2952,8 @@ Parsing of Numbers
 Date and Time
 
 * Time Basics::                 Concepts and definitions.
-* Elapsed Time::                Data types to represent elapsed times
+* Time Types::                  Data types to represent time.
+* Calculating Elapsed Time::    How to calculate the length of an interval.
 * Processor And CPU Time::      Time a program has spent executing.
 * Calendar Time::               Manipulation of “real” dates and times.
 * Setting an Alarm::            Sending a signal after a specified time.
@@ -2957,10 +2966,11 @@ Processor And CPU Time
 
 Calendar Time
 
-* Simple Calendar Time::        Facilities for manipulating calendar time.
-* High-Resolution Calendar::    A time representation with greater precision.
+* Getting the Time::            Functions for finding out what time it is.
+* Setting and Adjusting the Time::
+                                Functions for setting and adjusting
+                                  the system clock.
 * Broken-down Time::            Facilities for manipulating local time.
-* High Accuracy Clock::         Maintaining a high accuracy system clock.
 * Formatting Calendar Time::    Converting times to strings.
 * Parsing Date and Time::       Convert textual time and date information back
                                  into broken-down time values.
@@ -4729,6 +4739,12 @@ on semantics undefined within the standard.
 
      If this macro is defined, ISO C11 extensions to ISO C99 are
      included.
+
+ -- Macro: _ISOC2X_SOURCE
+
+     If this macro is defined, ISO C2X extensions to ISO C11 are
+     included.  Only some features from this draft standard are
+     supported by the GNU C Library.
 
  -- Macro: __STDC_WANT_LIB_EXT2__
 

@@ -2,9 +2,9 @@ This is libc.info, produced by makeinfo version 6.5 from libc.texinfo.
 
 This file documents the GNU C Library.
 
-   This is ‘The GNU C Library Reference Manual’, for version 2.30.
+   This is ‘The GNU C Library Reference Manual’, for version 2.31.
 
-   Copyright © 1993–2019 Free Software Foundation, Inc.
+   Copyright © 1993–2020 Free Software Foundation, Inc.
 
    Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -41,6 +41,8 @@ START-INFO-DIR-ENTRY
 * CLK_TCK: (libc)Processor Time.
 * CLOCAL: (libc)Control Modes.
 * CLOCKS_PER_SEC: (libc)CPU Time.
+* CLOCK_MONOTONIC: (libc)Getting the Time.
+* CLOCK_REALTIME: (libc)Getting the Time.
 * COLL_WEIGHTS_MAX: (libc)Utility Limits.
 * CPU_CLR: (libc)CPU Affinity.
 * CPU_ISSET: (libc)CPU Affinity.
@@ -512,8 +514,8 @@ START-INFO-DIR-ENTRY
 * acosl: (libc)Inverse Trig Functions.
 * addmntent: (libc)mtab.
 * addseverity: (libc)Adding Severity Classes.
-* adjtime: (libc)High-Resolution Calendar.
-* adjtimex: (libc)High-Resolution Calendar.
+* adjtime: (libc)Setting and Adjusting the Time.
+* adjtimex: (libc)Setting and Adjusting the Time.
 * aio_cancel64: (libc)Cancel AIO Operations.
 * aio_cancel: (libc)Cancel AIO Operations.
 * aio_error64: (libc)Status of AIO Operations.
@@ -695,6 +697,9 @@ START-INFO-DIR-ENTRY
 * clearerr: (libc)Error Recovery.
 * clearerr_unlocked: (libc)Error Recovery.
 * clock: (libc)CPU Time.
+* clock_getres: (libc)Getting the Time.
+* clock_gettime: (libc)Getting the Time.
+* clock_settime: (libc)Setting and Adjusting the Time.
 * clog10: (libc)Exponents and Logarithms.
 * clog10f: (libc)Exponents and Logarithms.
 * clog10fN: (libc)Exponents and Logarithms.
@@ -790,7 +795,7 @@ START-INFO-DIR-ENTRY
 * dcngettext: (libc)Advanced gettext functions.
 * ddivl: (libc)Misc FP Arithmetic.
 * dgettext: (libc)Translation with gettext.
-* difftime: (libc)Elapsed Time.
+* difftime: (libc)Calculating Elapsed Time.
 * dirfd: (libc)Opening a Directory.
 * dirname: (libc)Finding Tokens in a String.
 * div: (libc)Integer Division.
@@ -1153,7 +1158,7 @@ START-INFO-DIR-ENTRY
 * getsubopt: (libc)Suboptions.
 * gettext: (libc)Translation with gettext.
 * gettid: (libc)Process Identification.
-* gettimeofday: (libc)High-Resolution Calendar.
+* gettimeofday: (libc)Getting the Time.
 * getuid: (libc)Reading Persona.
 * getumask: (libc)Setting Permissions.
 * getutent: (libc)Manipulating the Database.
@@ -1486,8 +1491,8 @@ START-INFO-DIR-ENTRY
 * nrand48_r: (libc)SVID Random.
 * ntohl: (libc)Byte Order.
 * ntohs: (libc)Byte Order.
-* ntp_adjtime: (libc)High Accuracy Clock.
-* ntp_gettime: (libc)High Accuracy Clock.
+* ntp_adjtime: (libc)Setting and Adjusting the Time.
+* ntp_gettime: (libc)Setting and Adjusting the Time.
 * obstack_1grow: (libc)Growing Objects.
 * obstack_1grow_fast: (libc)Extra Fast Growing.
 * obstack_alignment_mask: (libc)Obstacks Data Alignment.
@@ -1551,6 +1556,7 @@ START-INFO-DIR-ENTRY
 * printf_size: (libc)Predefined Printf Handlers.
 * printf_size_info: (libc)Predefined Printf Handlers.
 * psignal: (libc)Signal Messages.
+* pthread_clockjoin_np: (libc)Default Thread Attributes.
 * pthread_cond_clockwait: (libc)Default Thread Attributes.
 * pthread_getattr_default_np: (libc)Default Thread Attributes.
 * pthread_getspecific: (libc)Thread-specific Data.
@@ -1560,6 +1566,8 @@ START-INFO-DIR-ENTRY
 * pthread_rwlock_clockwrlock: (libc)Default Thread Attributes.
 * pthread_setattr_default_np: (libc)Default Thread Attributes.
 * pthread_setspecific: (libc)Thread-specific Data.
+* pthread_timedjoin_np: (libc)Default Thread Attributes.
+* pthread_tryjoin_np: (libc)Default Thread Attributes.
 * ptsname: (libc)Allocation.
 * ptsname_r: (libc)Allocation.
 * putc: (libc)Simple Output.
@@ -1735,7 +1743,7 @@ START-INFO-DIR-ENTRY
 * setsockopt: (libc)Socket Option Functions.
 * setstate: (libc)BSD Random.
 * setstate_r: (libc)BSD Random.
-* settimeofday: (libc)High-Resolution Calendar.
+* settimeofday: (libc)Setting and Adjusting the Time.
 * setuid: (libc)Setting User ID.
 * setutent: (libc)Manipulating the Database.
 * setutxent: (libc)XPG Functions.
@@ -1800,7 +1808,7 @@ START-INFO-DIR-ENTRY
 * ssignal: (libc)Basic Signal Handling.
 * stat64: (libc)Reading Attributes.
 * stat: (libc)Reading Attributes.
-* stime: (libc)Simple Calendar Time.
+* stime: (libc)Setting and Adjusting the Time.
 * stpcpy: (libc)Copying Strings and Arrays.
 * stpncpy: (libc)Truncating Strings.
 * strcasecmp: (libc)String/Array Comparison.
@@ -1907,7 +1915,7 @@ START-INFO-DIR-ENTRY
 * thrd_join: (libc)ISO C Thread Management.
 * thrd_sleep: (libc)ISO C Thread Management.
 * thrd_yield: (libc)ISO C Thread Management.
-* time: (libc)Simple Calendar Time.
+* time: (libc)Getting the Time.
 * timegm: (libc)Broken-down Time.
 * timelocal: (libc)Broken-down Time.
 * times: (libc)Processor Time.
@@ -2099,7 +2107,7 @@ Variable and Constant Macro Index
 * (*__gconv_init_fct):                   glibc iconv Implementation.
                                                               (line 409)
 * (void):                                Error Messages.      (line 234)
-* _ATFILE_SOURCE:                        Feature Test Macros. (line 231)
+* _ATFILE_SOURCE:                        Feature Test Macros. (line 237)
 * _Complex_I:                            Complex Numbers.     (line  21)
 * _CS_LFS64_CFLAGS:                      String Parameters.   (line  71)
 * _CS_LFS64_LDFLAGS:                     String Parameters.   (line  78)
@@ -2110,10 +2118,10 @@ Variable and Constant Macro Index
 * _CS_LFS_LIBS:                          String Parameters.   (line  57)
 * _CS_LFS_LINTFLAGS:                     String Parameters.   (line  64)
 * _CS_PATH:                              String Parameters.   (line  38)
-* _DEFAULT_SOURCE:                       Feature Test Macros. (line 215)
+* _DEFAULT_SOURCE:                       Feature Test Macros. (line 221)
 * _FILE_OFFSET_BITS:                     Feature Test Macros. (line 143)
-* _FORTIFY_SOURCE:                       Feature Test Macros. (line 235)
-* _GNU_SOURCE:                           Feature Test Macros. (line 208)
+* _FORTIFY_SOURCE:                       Feature Test Macros. (line 241)
+* _GNU_SOURCE:                           Feature Test Macros. (line 214)
 * _IOFBF:                                Controlling Buffering.
                                                               (line  45)
 * _IOLBF:                                Controlling Buffering.
@@ -2121,6 +2129,7 @@ Variable and Constant Macro Index
 * _IONBF:                                Controlling Buffering.
                                                               (line  57)
 * _ISOC11_SOURCE:                        Feature Test Macros. (line 176)
+* _ISOC2X_SOURCE:                        Feature Test Macros. (line 181)
 * _ISOC99_SOURCE:                        Feature Test Macros. (line 170)
 * _LARGEFILE64_SOURCE:                   Feature Test Macros. (line 124)
 * _LARGEFILE_SOURCE:                     Feature Test Macros. (line 112)
@@ -2188,7 +2197,7 @@ Variable and Constant Macro Index
 * _POSIX_VDISABLE:                       Special Characters.  (line  22)
 * _POSIX_VDISABLE <1>:                   Options for Files.   (line  40)
 * _POSIX_VERSION:                        Version Supported.   (line   6)
-* _REENTRANT:                            Feature Test Macros. (line 241)
+* _REENTRANT:                            Feature Test Macros. (line 247)
 * _SC_2_C_DEV:                           Constants for Sysconf.
                                                               (line 306)
 * _SC_2_FORT_DEV:                        Constants for Sysconf.
@@ -2472,17 +2481,17 @@ Variable and Constant Macro Index
                                                               (line 524)
 * _SC_XOPEN_XPG4:                        Constants for Sysconf.
                                                               (line 528)
-* _THREAD_SAFE:                          Feature Test Macros. (line 242)
+* _THREAD_SAFE:                          Feature Test Macros. (line 248)
 * _XOPEN_SOURCE:                         Feature Test Macros. (line  90)
 * _XOPEN_SOURCE_EXTENDED:                Feature Test Macros. (line  91)
 * __free_hook:                           Hooks for Malloc.    (line  37)
 * __malloc_hook:                         Hooks for Malloc.    (line  13)
 * __memalign_hook:                       Hooks for Malloc.    (line  49)
 * __realloc_hook:                        Hooks for Malloc.    (line  25)
-* __STDC_WANT_IEC_60559_BFP_EXT__:       Feature Test Macros. (line 187)
-* __STDC_WANT_IEC_60559_FUNCS_EXT__:     Feature Test Macros. (line 194)
-* __STDC_WANT_IEC_60559_TYPES_EXT__:     Feature Test Macros. (line 201)
-* __STDC_WANT_LIB_EXT2__:                Feature Test Macros. (line 181)
+* __STDC_WANT_IEC_60559_BFP_EXT__:       Feature Test Macros. (line 193)
+* __STDC_WANT_IEC_60559_FUNCS_EXT__:     Feature Test Macros. (line 200)
+* __STDC_WANT_IEC_60559_TYPES_EXT__:     Feature Test Macros. (line 207)
+* __STDC_WANT_LIB_EXT2__:                Feature Test Macros. (line 187)
 * ABDAY_1:                               The Elegant and Fast Way.
                                                               (line  35)
 * ABDAY_2:                               The Elegant and Fast Way.
@@ -2651,6 +2660,8 @@ Variable and Constant Macro Index
 * CLK_TCK:                               Processor Time.      (line  44)
 * CLOCAL:                                Control Modes.       (line  18)
 * CLOCKS_PER_SEC:                        CPU Time.            (line  33)
+* CLOCK_MONOTONIC:                       Getting the Time.    (line  61)
+* CLOCK_REALTIME:                        Getting the Time.    (line  49)
 * CODESET:                               The Elegant and Fast Way.
                                                               (line  31)
 * COLL_WEIGHTS_MAX:                      Utility Limits.      (line  35)
@@ -2955,7 +2966,7 @@ Variable and Constant Macro Index
 * FNM_NOESCAPE:                          Wildcard Matching.   (line  54)
 * FNM_PATHNAME:                          Wildcard Matching.   (line  37)
 * FNM_PERIOD:                            Wildcard Matching.   (line  43)
-* FOPEN_MAX:                             Opening Streams.     (line 146)
+* FOPEN_MAX:                             Opening Streams.     (line 148)
 * FPE_DECOVF_TRAP:                       Program Error Signals.
                                                               (line  89)
 * FPE_FLTDIV_TRAP:                       Program Error Signals.
@@ -3160,9 +3171,9 @@ Variable and Constant Macro Index
 * IPPORT_USERRESERVED:                   Ports.               (line  42)
 * ISIG:                                  Local Modes.         (line  90)
 * ISTRIP:                                Input Modes.         (line  54)
-* ITIMER_PROF:                           Setting an Alarm.    (line 109)
-* ITIMER_REAL:                           Setting an Alarm.    (line  99)
-* ITIMER_VIRTUAL:                        Setting an Alarm.    (line 104)
+* ITIMER_PROF:                           Setting an Alarm.    (line 108)
+* ITIMER_REAL:                           Setting an Alarm.    (line  98)
+* ITIMER_VIRTUAL:                        Setting an Alarm.    (line 103)
 * IXANY:                                 Input Modes.         (line 117)
 * IXOFF:                                 Input Modes.         (line  98)
 * IXON:                                  Input Modes.         (line 108)
@@ -3576,8 +3587,8 @@ Variable and Constant Macro Index
 * PI:                                    Mathematical Constants.
                                                               (line  54)
 * PIPE_BUF:                              Limits for Files.    (line  56)
-* PKEY_DISABLE_ACCESS:                   Memory Protection.   (line 300)
-* PKEY_DISABLE_WRITE:                    Memory Protection.   (line 295)
+* PKEY_DISABLE_ACCESS:                   Memory Protection.   (line 303)
+* PKEY_DISABLE_WRITE:                    Memory Protection.   (line 298)
 * PM_STR:                                The Elegant and Fast Way.
                                                               (line 110)
 * POSITIVE_SIGN:                         The Elegant and Fast Way.
@@ -3887,7 +3898,8 @@ Variable and Constant Macro Index
 * thread_local:                          ISO C Thread-local Storage.
                                                               (line  27)
 * timezone:                              Time Zone Functions. (line  47)
-* TIME_ERROR:                            High Accuracy Clock. (line  50)
+* TIME_ERROR:                            Setting and Adjusting the Time.
+                                                              (line 111)
 * TMP_MAX:                               Temporary Files.     (line  98)
 * TOSTOP:                                Local Modes.         (line 121)
 * TRY_AGAIN:                             Host Names.          (line 114)
@@ -4221,13 +4233,12 @@ Program and File Index
 * sys/stat.h <6>:                        Making Special Files.
                                                               (line  10)
 * sys/stat.h <7>:                        FIFO Special Files.  (line  17)
-* sys/time.h:                            File Times.          (line  98)
-* sys/time.h <1>:                        High-Resolution Calendar.
-                                                              (line  12)
-* sys/time.h <2>:                        Setting an Alarm.    (line  51)
+* sys/time.h:                            File Times.          (line  97)
+* sys/time.h <1>:                        Setting an Alarm.    (line  51)
 * sys/times.h:                           Reserved Names.      (line  98)
 * sys/times.h <1>:                       Processor Time.      (line  10)
-* sys/timex.h:                           High Accuracy Clock. (line   6)
+* sys/timex.h:                           Setting and Adjusting the Time.
+                                                              (line  60)
 * sys/types.h:                           Waiting for I/O.     (line  23)
 * sys/types.h <1>:                       Process Identification.
                                                               (line  35)
@@ -4252,11 +4263,9 @@ Program and File Index
 * threads.h:                             ISO C Threads.       (line   6)
 * time.h:                                File Times.          (line  14)
 * time.h <1>:                            CPU Time.            (line   7)
-* time.h <2>:                            Simple Calendar Time.
-                                                              (line   8)
-* time.h <3>:                            Formatting Calendar Time.
+* time.h <2>:                            Formatting Calendar Time.
                                                               (line   7)
-* time.h <4>:                            TZ Variable.         (line   9)
+* time.h <3>:                            TZ Variable.         (line   9)
 * ulimit.h:                              Limits on Resources. (line 204)
 * umask:                                 Setting Permissions. (line  29)
 * unistd.h:                              Opening and Closing Files.

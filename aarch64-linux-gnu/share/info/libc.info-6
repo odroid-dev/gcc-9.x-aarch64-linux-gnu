@@ -2,9 +2,9 @@ This is libc.info, produced by makeinfo version 6.5 from libc.texinfo.
 
 This file documents the GNU C Library.
 
-   This is ‘The GNU C Library Reference Manual’, for version 2.30.
+   This is ‘The GNU C Library Reference Manual’, for version 2.31.
 
-   Copyright © 1993–2019 Free Software Foundation, Inc.
+   Copyright © 1993–2020 Free Software Foundation, Inc.
 
    Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -41,6 +41,8 @@ START-INFO-DIR-ENTRY
 * CLK_TCK: (libc)Processor Time.
 * CLOCAL: (libc)Control Modes.
 * CLOCKS_PER_SEC: (libc)CPU Time.
+* CLOCK_MONOTONIC: (libc)Getting the Time.
+* CLOCK_REALTIME: (libc)Getting the Time.
 * COLL_WEIGHTS_MAX: (libc)Utility Limits.
 * CPU_CLR: (libc)CPU Affinity.
 * CPU_ISSET: (libc)CPU Affinity.
@@ -512,8 +514,8 @@ START-INFO-DIR-ENTRY
 * acosl: (libc)Inverse Trig Functions.
 * addmntent: (libc)mtab.
 * addseverity: (libc)Adding Severity Classes.
-* adjtime: (libc)High-Resolution Calendar.
-* adjtimex: (libc)High-Resolution Calendar.
+* adjtime: (libc)Setting and Adjusting the Time.
+* adjtimex: (libc)Setting and Adjusting the Time.
 * aio_cancel64: (libc)Cancel AIO Operations.
 * aio_cancel: (libc)Cancel AIO Operations.
 * aio_error64: (libc)Status of AIO Operations.
@@ -695,6 +697,9 @@ START-INFO-DIR-ENTRY
 * clearerr: (libc)Error Recovery.
 * clearerr_unlocked: (libc)Error Recovery.
 * clock: (libc)CPU Time.
+* clock_getres: (libc)Getting the Time.
+* clock_gettime: (libc)Getting the Time.
+* clock_settime: (libc)Setting and Adjusting the Time.
 * clog10: (libc)Exponents and Logarithms.
 * clog10f: (libc)Exponents and Logarithms.
 * clog10fN: (libc)Exponents and Logarithms.
@@ -790,7 +795,7 @@ START-INFO-DIR-ENTRY
 * dcngettext: (libc)Advanced gettext functions.
 * ddivl: (libc)Misc FP Arithmetic.
 * dgettext: (libc)Translation with gettext.
-* difftime: (libc)Elapsed Time.
+* difftime: (libc)Calculating Elapsed Time.
 * dirfd: (libc)Opening a Directory.
 * dirname: (libc)Finding Tokens in a String.
 * div: (libc)Integer Division.
@@ -1153,7 +1158,7 @@ START-INFO-DIR-ENTRY
 * getsubopt: (libc)Suboptions.
 * gettext: (libc)Translation with gettext.
 * gettid: (libc)Process Identification.
-* gettimeofday: (libc)High-Resolution Calendar.
+* gettimeofday: (libc)Getting the Time.
 * getuid: (libc)Reading Persona.
 * getumask: (libc)Setting Permissions.
 * getutent: (libc)Manipulating the Database.
@@ -1486,8 +1491,8 @@ START-INFO-DIR-ENTRY
 * nrand48_r: (libc)SVID Random.
 * ntohl: (libc)Byte Order.
 * ntohs: (libc)Byte Order.
-* ntp_adjtime: (libc)High Accuracy Clock.
-* ntp_gettime: (libc)High Accuracy Clock.
+* ntp_adjtime: (libc)Setting and Adjusting the Time.
+* ntp_gettime: (libc)Setting and Adjusting the Time.
 * obstack_1grow: (libc)Growing Objects.
 * obstack_1grow_fast: (libc)Extra Fast Growing.
 * obstack_alignment_mask: (libc)Obstacks Data Alignment.
@@ -1551,6 +1556,7 @@ START-INFO-DIR-ENTRY
 * printf_size: (libc)Predefined Printf Handlers.
 * printf_size_info: (libc)Predefined Printf Handlers.
 * psignal: (libc)Signal Messages.
+* pthread_clockjoin_np: (libc)Default Thread Attributes.
 * pthread_cond_clockwait: (libc)Default Thread Attributes.
 * pthread_getattr_default_np: (libc)Default Thread Attributes.
 * pthread_getspecific: (libc)Thread-specific Data.
@@ -1560,6 +1566,8 @@ START-INFO-DIR-ENTRY
 * pthread_rwlock_clockwrlock: (libc)Default Thread Attributes.
 * pthread_setattr_default_np: (libc)Default Thread Attributes.
 * pthread_setspecific: (libc)Thread-specific Data.
+* pthread_timedjoin_np: (libc)Default Thread Attributes.
+* pthread_tryjoin_np: (libc)Default Thread Attributes.
 * ptsname: (libc)Allocation.
 * ptsname_r: (libc)Allocation.
 * putc: (libc)Simple Output.
@@ -1735,7 +1743,7 @@ START-INFO-DIR-ENTRY
 * setsockopt: (libc)Socket Option Functions.
 * setstate: (libc)BSD Random.
 * setstate_r: (libc)BSD Random.
-* settimeofday: (libc)High-Resolution Calendar.
+* settimeofday: (libc)Setting and Adjusting the Time.
 * setuid: (libc)Setting User ID.
 * setutent: (libc)Manipulating the Database.
 * setutxent: (libc)XPG Functions.
@@ -1800,7 +1808,7 @@ START-INFO-DIR-ENTRY
 * ssignal: (libc)Basic Signal Handling.
 * stat64: (libc)Reading Attributes.
 * stat: (libc)Reading Attributes.
-* stime: (libc)Simple Calendar Time.
+* stime: (libc)Setting and Adjusting the Time.
 * stpcpy: (libc)Copying Strings and Arrays.
 * stpncpy: (libc)Truncating Strings.
 * strcasecmp: (libc)String/Array Comparison.
@@ -1907,7 +1915,7 @@ START-INFO-DIR-ENTRY
 * thrd_join: (libc)ISO C Thread Management.
 * thrd_sleep: (libc)ISO C Thread Management.
 * thrd_yield: (libc)ISO C Thread Management.
-* time: (libc)Simple Calendar Time.
+* time: (libc)Getting the Time.
 * timegm: (libc)Broken-down Time.
 * timelocal: (libc)Broken-down Time.
 * times: (libc)Processor Time.
@@ -2082,6 +2090,59 @@ START-INFO-DIR-ENTRY
 * ynfNx: (libc)Special Functions.
 * ynl: (libc)Special Functions.
 END-INFO-DIR-ENTRY
+
+
+File: libc.info,  Node: Stream/Descriptor Precautions,  Next: Scatter-Gather,  Prev: Descriptors and Streams,  Up: Low-Level I/O
+
+13.5 Dangers of Mixing Streams and Descriptors
+==============================================
+
+You can have multiple file descriptors and streams (let’s call both
+streams and descriptors “channels” for short) connected to the same
+file, but you must take care to avoid confusion between channels.  There
+are two cases to consider: “linked” channels that share a single file
+position value, and “independent” channels that have their own file
+positions.
+
+   It’s best to use just one channel in your program for actual data
+transfer to any given file, except when all the access is for input.
+For example, if you open a pipe (something you can only do at the file
+descriptor level), either do all I/O with the descriptor, or construct a
+stream from the descriptor with ‘fdopen’ and then do all I/O with the
+stream.
+
+* Menu:
+
+* Linked Channels::	   Dealing with channels sharing a file position.
+* Independent Channels::   Dealing with separately opened, unlinked channels.
+* Cleaning Streams::	   Cleaning a stream makes it safe to use
+                            another channel.
+
+
+File: libc.info,  Node: Linked Channels,  Next: Independent Channels,  Up: Stream/Descriptor Precautions
+
+13.5.1 Linked Channels
+----------------------
+
+Channels that come from a single opening share the same file position;
+we call them “linked” channels.  Linked channels result when you make a
+stream from a descriptor using ‘fdopen’, when you get a descriptor from
+a stream with ‘fileno’, when you copy a descriptor with ‘dup’ or ‘dup2’,
+and when descriptors are inherited during ‘fork’.  For files that don’t
+support random access, such as terminals and pipes, _all_ channels are
+effectively linked.  On random-access files, all append-type output
+streams are effectively linked to each other.
+
+   If you have been using a stream for I/O (or have just opened the
+stream), and you want to do I/O using another channel (either a stream
+or a descriptor) that is linked to it, you must first “clean up” the
+stream that you have been using.  *Note Cleaning Streams::.
+
+   Terminating a process, or executing a new program in the process,
+destroys all the streams in the process.  If descriptors linked to these
+streams persist in other processes, their file positions become
+undefined as a result.  To prevent this, you must clean up the streams
+before destroying them.
 
 
 File: libc.info,  Node: Independent Channels,  Next: Cleaning Streams,  Prev: Linked Channels,  Up: Stream/Descriptor Precautions
@@ -3082,10 +3143,10 @@ macros for manipulating these objects.
      The TIMEOUT specifies the maximum time to wait.  If you pass a null
      pointer for this argument, it means to block indefinitely until one
      of the file descriptors is ready.  Otherwise, you should provide
-     the time in ‘struct timeval’ format; see *note High-Resolution
-     Calendar::.  Specify zero as the time (a ‘struct timeval’
-     containing all zeros) if you want to find out which descriptors are
-     ready without waiting if none are ready.
+     the time in ‘struct timeval’ format; see *note Time Types::.
+     Specify zero as the time (a ‘struct timeval’ containing all zeros)
+     if you want to find out which descriptors are ready without waiting
+     if none are ready.
 
      The normal return value from ‘select’ is the total number of ready
      file descriptors in all of the sets.  Each of the argument sets is

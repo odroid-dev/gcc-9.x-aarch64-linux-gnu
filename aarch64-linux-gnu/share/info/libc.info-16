@@ -2,9 +2,9 @@ This is libc.info, produced by makeinfo version 6.5 from libc.texinfo.
 
 This file documents the GNU C Library.
 
-   This is ‘The GNU C Library Reference Manual’, for version 2.30.
+   This is ‘The GNU C Library Reference Manual’, for version 2.31.
 
-   Copyright © 1993–2019 Free Software Foundation, Inc.
+   Copyright © 1993–2020 Free Software Foundation, Inc.
 
    Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -41,6 +41,8 @@ START-INFO-DIR-ENTRY
 * CLK_TCK: (libc)Processor Time.
 * CLOCAL: (libc)Control Modes.
 * CLOCKS_PER_SEC: (libc)CPU Time.
+* CLOCK_MONOTONIC: (libc)Getting the Time.
+* CLOCK_REALTIME: (libc)Getting the Time.
 * COLL_WEIGHTS_MAX: (libc)Utility Limits.
 * CPU_CLR: (libc)CPU Affinity.
 * CPU_ISSET: (libc)CPU Affinity.
@@ -512,8 +514,8 @@ START-INFO-DIR-ENTRY
 * acosl: (libc)Inverse Trig Functions.
 * addmntent: (libc)mtab.
 * addseverity: (libc)Adding Severity Classes.
-* adjtime: (libc)High-Resolution Calendar.
-* adjtimex: (libc)High-Resolution Calendar.
+* adjtime: (libc)Setting and Adjusting the Time.
+* adjtimex: (libc)Setting and Adjusting the Time.
 * aio_cancel64: (libc)Cancel AIO Operations.
 * aio_cancel: (libc)Cancel AIO Operations.
 * aio_error64: (libc)Status of AIO Operations.
@@ -695,6 +697,9 @@ START-INFO-DIR-ENTRY
 * clearerr: (libc)Error Recovery.
 * clearerr_unlocked: (libc)Error Recovery.
 * clock: (libc)CPU Time.
+* clock_getres: (libc)Getting the Time.
+* clock_gettime: (libc)Getting the Time.
+* clock_settime: (libc)Setting and Adjusting the Time.
 * clog10: (libc)Exponents and Logarithms.
 * clog10f: (libc)Exponents and Logarithms.
 * clog10fN: (libc)Exponents and Logarithms.
@@ -790,7 +795,7 @@ START-INFO-DIR-ENTRY
 * dcngettext: (libc)Advanced gettext functions.
 * ddivl: (libc)Misc FP Arithmetic.
 * dgettext: (libc)Translation with gettext.
-* difftime: (libc)Elapsed Time.
+* difftime: (libc)Calculating Elapsed Time.
 * dirfd: (libc)Opening a Directory.
 * dirname: (libc)Finding Tokens in a String.
 * div: (libc)Integer Division.
@@ -1153,7 +1158,7 @@ START-INFO-DIR-ENTRY
 * getsubopt: (libc)Suboptions.
 * gettext: (libc)Translation with gettext.
 * gettid: (libc)Process Identification.
-* gettimeofday: (libc)High-Resolution Calendar.
+* gettimeofday: (libc)Getting the Time.
 * getuid: (libc)Reading Persona.
 * getumask: (libc)Setting Permissions.
 * getutent: (libc)Manipulating the Database.
@@ -1486,8 +1491,8 @@ START-INFO-DIR-ENTRY
 * nrand48_r: (libc)SVID Random.
 * ntohl: (libc)Byte Order.
 * ntohs: (libc)Byte Order.
-* ntp_adjtime: (libc)High Accuracy Clock.
-* ntp_gettime: (libc)High Accuracy Clock.
+* ntp_adjtime: (libc)Setting and Adjusting the Time.
+* ntp_gettime: (libc)Setting and Adjusting the Time.
 * obstack_1grow: (libc)Growing Objects.
 * obstack_1grow_fast: (libc)Extra Fast Growing.
 * obstack_alignment_mask: (libc)Obstacks Data Alignment.
@@ -1551,6 +1556,7 @@ START-INFO-DIR-ENTRY
 * printf_size: (libc)Predefined Printf Handlers.
 * printf_size_info: (libc)Predefined Printf Handlers.
 * psignal: (libc)Signal Messages.
+* pthread_clockjoin_np: (libc)Default Thread Attributes.
 * pthread_cond_clockwait: (libc)Default Thread Attributes.
 * pthread_getattr_default_np: (libc)Default Thread Attributes.
 * pthread_getspecific: (libc)Thread-specific Data.
@@ -1560,6 +1566,8 @@ START-INFO-DIR-ENTRY
 * pthread_rwlock_clockwrlock: (libc)Default Thread Attributes.
 * pthread_setattr_default_np: (libc)Default Thread Attributes.
 * pthread_setspecific: (libc)Thread-specific Data.
+* pthread_timedjoin_np: (libc)Default Thread Attributes.
+* pthread_tryjoin_np: (libc)Default Thread Attributes.
 * ptsname: (libc)Allocation.
 * ptsname_r: (libc)Allocation.
 * putc: (libc)Simple Output.
@@ -1735,7 +1743,7 @@ START-INFO-DIR-ENTRY
 * setsockopt: (libc)Socket Option Functions.
 * setstate: (libc)BSD Random.
 * setstate_r: (libc)BSD Random.
-* settimeofday: (libc)High-Resolution Calendar.
+* settimeofday: (libc)Setting and Adjusting the Time.
 * setuid: (libc)Setting User ID.
 * setutent: (libc)Manipulating the Database.
 * setutxent: (libc)XPG Functions.
@@ -1800,7 +1808,7 @@ START-INFO-DIR-ENTRY
 * ssignal: (libc)Basic Signal Handling.
 * stat64: (libc)Reading Attributes.
 * stat: (libc)Reading Attributes.
-* stime: (libc)Simple Calendar Time.
+* stime: (libc)Setting and Adjusting the Time.
 * stpcpy: (libc)Copying Strings and Arrays.
 * stpncpy: (libc)Truncating Strings.
 * strcasecmp: (libc)String/Array Comparison.
@@ -1907,7 +1915,7 @@ START-INFO-DIR-ENTRY
 * thrd_join: (libc)ISO C Thread Management.
 * thrd_sleep: (libc)ISO C Thread Management.
 * thrd_yield: (libc)ISO C Thread Management.
-* time: (libc)Simple Calendar Time.
+* time: (libc)Getting the Time.
 * timegm: (libc)Broken-down Time.
 * timelocal: (libc)Broken-down Time.
 * times: (libc)Processor Time.
@@ -2103,7 +2111,8 @@ Type Index
 * blkcnt64_t:                            Attribute Meanings.  (line 232)
 * blkcnt_t:                              Attribute Meanings.  (line 224)
 * cc_t:                                  Mode Data Types.     (line  48)
-* clock_t:                               CPU Time.            (line  39)
+* clockid_t:                             Getting the Time.    (line  41)
+* clock_t:                               Time Types.          (line   9)
 * cnd_t:                                 ISO C Condition Variables.
                                                               (line  14)
 * comparison_fn_t:                       Comparison Functions.
@@ -2166,6 +2175,8 @@ Type Index
                                                               (line  84)
 * glibc.malloc.mmap_threshold:           Memory Allocation Tunables.
                                                               (line  56)
+* glibc.malloc.mxfast:                   Memory Allocation Tunables.
+                                                              (line 148)
 * glibc.malloc.perturb:                  Memory Allocation Tunables.
                                                               (line  42)
 * glibc.malloc.tcache_count:             Memory Allocation Tunables.
@@ -2348,8 +2359,10 @@ Type Index
                                                               (line  11)
 * struct mntent:                         mtab.                (line   8)
 * struct netent:                         Networks Database.   (line  13)
-* struct ntptimeval:                     High Accuracy Clock. (line  17)
-* struct ntptimeval <1>:                 High Accuracy Clock. (line  17)
+* struct ntptimeval:                     Setting and Adjusting the Time.
+                                                              (line  78)
+* struct ntptimeval <1>:                 Setting and Adjusting the Time.
+                                                              (line  78)
 * struct obstack:                        Creating Obstacks.   (line   9)
 * struct option:                         Getopt Long Options. (line  12)
 * struct passwd:                         User Data Structure. (line   9)
@@ -2377,13 +2390,14 @@ Type Index
 * struct stat:                           Attribute Meanings.  (line  14)
 * struct stat64:                         Attribute Meanings.  (line 107)
 * struct termios:                        Mode Data Types.     (line  10)
-* struct timespec:                       Elapsed Time.        (line  43)
-* struct timeval:                        Elapsed Time.        (line  30)
-* struct timex:                          High Accuracy Clock. (line  55)
-* struct timex <1>:                      High Accuracy Clock. (line  55)
-* struct timezone:                       High-Resolution Calendar.
-                                                              (line  14)
-* struct tm:                             Broken-down Time.    (line  19)
+* struct timespec:                       Time Types.          (line  38)
+* struct timeval:                        Time Types.          (line  59)
+* struct timex:                          Setting and Adjusting the Time.
+                                                              (line 116)
+* struct timex <1>:                      Setting and Adjusting the Time.
+                                                              (line 116)
+* struct tm:                             Time Types.          (line  82)
+* struct tm <1>:                         Broken-down Time.    (line  19)
 * struct tms:                            Processor Time.      (line  12)
 * struct utimbuf:                        File Times.          (line  38)
 * struct utmp:                           Manipulating the Database.
@@ -2400,8 +2414,7 @@ Type Index
                                                               (line  16)
 * thrd_t:                                ISO C Thread Management.
                                                               (line  12)
-* time_t:                                Simple Calendar Time.
-                                                              (line  10)
+* time_t:                                Time Types.          (line  17)
 * tss_dtor_t:                            ISO C Thread-local Storage.
                                                               (line  20)
 * tss_t:                                 ISO C Thread-local Storage.
@@ -2447,11 +2460,11 @@ Function and Macro Index
 * __fpending:                            Controlling Buffering.
                                                               (line 150)
 * __fpurge:                              Flushing Buffers.    (line  76)
-* __freadable:                           Opening Streams.     (line 217)
-* __freading:                            Opening Streams.     (line 242)
+* __freadable:                           Opening Streams.     (line 219)
+* __freading:                            Opening Streams.     (line 244)
 * __fsetlocking:                         Streams and Threads. (line 172)
-* __fwritable:                           Opening Streams.     (line 228)
-* __fwriting:                            Opening Streams.     (line 256)
+* __fwritable:                           Opening Streams.     (line 230)
+* __fwriting:                            Opening Streams.     (line 258)
 * __ppc_get_timebase:                    PowerPC.             (line   9)
 * __ppc_get_timebase_freq:               PowerPC.             (line  25)
 * __ppc_mdoio:                           PowerPC.             (line  51)
@@ -2493,10 +2506,10 @@ Function and Macro Index
 * addmntent:                             mtab.                (line 181)
 * addseverity:                           Adding Severity Classes.
                                                               (line  12)
-* adjtime:                               High-Resolution Calendar.
-                                                              (line  94)
-* adjtimex:                              High-Resolution Calendar.
-                                                              (line 132)
+* adjtime:                               Setting and Adjusting the Time.
+                                                              (line 251)
+* adjtimex:                              Setting and Adjusting the Time.
+                                                              (line 306)
 * aio_cancel:                            Cancel AIO Operations.
                                                               (line  18)
 * aio_cancel64:                          Cancel AIO Operations.
@@ -2527,7 +2540,7 @@ Function and Macro Index
                                                               (line  91)
 * aio_write64:                           Asynchronous Reads/Writes.
                                                               (line 155)
-* alarm:                                 Setting an Alarm.    (line 114)
+* alarm:                                 Setting an Alarm.    (line 113)
 * aligned_alloc:                         Aligned Memory Blocks.
                                                               (line  12)
 * alloca:                                Variable Size Automatic.
@@ -2799,7 +2812,11 @@ Function and Macro Index
 * clearenv:                              Environment Access.  (line 116)
 * clearerr:                              Error Recovery.      (line   9)
 * clearerr_unlocked:                     Error Recovery.      (line  20)
-* clock:                                 CPU Time.            (line  44)
+* clock:                                 CPU Time.            (line  39)
+* clock_getres:                          Getting the Time.    (line  91)
+* clock_gettime:                         Getting the Time.    (line  74)
+* clock_settime:                         Setting and Adjusting the Time.
+                                                              (line  15)
 * clog:                                  Exponents and Logarithms.
                                                               (line 281)
 * clog10:                                Exponents and Logarithms.
@@ -2967,7 +2984,8 @@ Function and Macro Index
 * ddivl:                                 Misc FP Arithmetic.  (line 160)
 * dgettext:                              Translation with gettext.
                                                               (line  78)
-* difftime:                              Elapsed Time.        (line  10)
+* difftime:                              Calculating Elapsed Time.
+                                                              (line  10)
 * dirfd:                                 Opening a Directory. (line 104)
 * dirname:                               Finding Tokens in a String.
                                                               (line 274)
@@ -3221,7 +3239,7 @@ Function and Macro Index
 * fMxsubfNx:                             Misc FP Arithmetic.  (line 134)
 * fnmatch:                               Wildcard Matching.   (line  11)
 * fopen:                                 Opening Streams.     (line  13)
-* fopen64:                               Opening Streams.     (line 129)
+* fopen64:                               Opening Streams.     (line 131)
 * fopencookie:                           Streams and Cookies. (line  56)
 * fork:                                  Creating a Process.  (line   9)
 * forkpty:                               Pseudo-Terminal Pairs.
@@ -3243,8 +3261,8 @@ Function and Macro Index
 * fread_unlocked:                        Block Input/Output.  (line  45)
 * free:                                  Freeing after Malloc.
                                                               (line  10)
-* freopen:                               Opening Streams.     (line 158)
-* freopen64:                             Opening Streams.     (line 194)
+* freopen:                               Opening Streams.     (line 160)
+* freopen64:                             Opening Streams.     (line 196)
 * frexp:                                 Normalization Functions.
                                                               (line  16)
 * frexpf:                                Normalization Functions.
@@ -3290,7 +3308,7 @@ Function and Macro Index
 * ftw64:                                 Working with Directory Trees.
                                                               (line 177)
 * funlockfile:                           Streams and Threads. (line  54)
-* futimes:                               File Times.          (line 133)
+* futimes:                               File Times.          (line 132)
 * fwide:                                 Streams and I18N.    (line  57)
 * fwprintf:                              Formatted Output Functions.
                                                               (line  41)
@@ -3344,7 +3362,7 @@ Function and Macro Index
 * gethostent:                            Host Names.          (line 246)
 * gethostid:                             Host Identification. (line 129)
 * gethostname:                           Host Identification. (line  53)
-* getitimer:                             Setting an Alarm.    (line  88)
+* getitimer:                             Setting an Alarm.    (line  87)
 * getline:                               Line Input.          (line  20)
 * getloadavg:                            Processor Resources. (line  54)
 * getlogin:                              Who Logged In.       (line  16)
@@ -3405,8 +3423,7 @@ Function and Macro Index
                                                               (line  31)
 * gettid:                                Process Identification.
                                                               (line  58)
-* gettimeofday:                          High-Resolution Calendar.
-                                                              (line  30)
+* gettimeofday:                          Getting the Time.    (line 120)
 * getuid:                                Reading Persona.     (line  21)
 * getumask:                              Setting Permissions. (line  65)
 * getutent:                              Manipulating the Database.
@@ -3773,7 +3790,7 @@ Function and Macro Index
                                                               (line  99)
 * lstat:                                 Reading Attributes.  (line  84)
 * lstat64:                               Reading Attributes.  (line  98)
-* lutimes:                               File Times.          (line 115)
+* lutimes:                               File Times.          (line 114)
 * madvise:                               Memory-mapped I/O.   (line 279)
 * main:                                  Program Arguments.   (line   6)
 * makecontext:                           System V contexts.   (line  81)
@@ -3902,8 +3919,10 @@ Function and Macro Index
 * nrand48_r:                             SVID Random.         (line 245)
 * ntohl:                                 Byte Order.          (line  60)
 * ntohs:                                 Byte Order.          (line  42)
-* ntp_adjtime:                           High Accuracy Clock. (line 154)
-* ntp_gettime:                           High Accuracy Clock. (line  35)
+* ntp_adjtime:                           Setting and Adjusting the Time.
+                                                              (line 215)
+* ntp_gettime:                           Setting and Adjusting the Time.
+                                                              (line  96)
 * obstack_1grow:                         Growing Objects.     (line  56)
 * obstack_1grow_fast:                    Extra Fast Growing.  (line  34)
 * obstack_alignment_mask:                Obstacks Data Alignment.
@@ -3964,10 +3983,10 @@ Function and Macro Index
 * perror:                                Error Messages.      (line  54)
 * pipe:                                  Creating a Pipe.     (line  16)
 * pkey_alloc:                            Memory Protection.   (line 199)
-* pkey_free:                             Memory Protection.   (line 230)
-* pkey_get:                              Memory Protection.   (line 324)
-* pkey_mprotect:                         Memory Protection.   (line 250)
-* pkey_set:                              Memory Protection.   (line 284)
+* pkey_free:                             Memory Protection.   (line 233)
+* pkey_get:                              Memory Protection.   (line 327)
+* pkey_mprotect:                         Memory Protection.   (line 253)
+* pkey_set:                              Memory Protection.   (line 287)
 * popen:                                 Pipe to a Subprocess.
                                                               (line  17)
 * posix_fallocate:                       Storage Allocation.  (line  27)
@@ -3997,6 +4016,8 @@ Function and Macro Index
 * printf_size_info:                      Predefined Printf Handlers.
                                                               (line  44)
 * psignal:                               Signal Messages.     (line  29)
+* pthread_clockjoin_np:                  Default Thread Attributes.
+                                                              (line  97)
 * pthread_cond_clockwait:                Default Thread Attributes.
                                                               (line  39)
 * pthread_getattr_default_np:            Default Thread Attributes.
@@ -4013,6 +4034,10 @@ Function and Macro Index
                                                               (line  17)
 * pthread_setspecific:                   Thread-specific Data.
                                                               (line  42)
+* pthread_timedjoin_np:                  Default Thread Attributes.
+                                                              (line  85)
+* pthread_tryjoin_np:                    Default Thread Attributes.
+                                                              (line  75)
 * ptsname:                               Allocation.          (line  83)
 * ptsname_r:                             Allocation.          (line  94)
 * putc:                                  Simple Output.       (line  48)
@@ -4197,7 +4222,7 @@ Function and Macro Index
 * sethostent:                            Host Names.          (line 231)
 * sethostid:                             Host Identification. (line 148)
 * sethostname:                           Host Identification. (line  82)
-* setitimer:                             Setting an Alarm.    (line  68)
+* setitimer:                             Setting an Alarm.    (line  67)
 * setjmp:                                Non-Local Details.   (line  16)
 * setlinebuf:                            Controlling Buffering.
                                                               (line 110)
@@ -4235,8 +4260,8 @@ Function and Macro Index
                                                               (line  37)
 * setstate:                              BSD Random.          (line  54)
 * setstate_r:                            BSD Random.          (line 122)
-* settimeofday:                          High-Resolution Calendar.
-                                                              (line  53)
+* settimeofday:                          Setting and Adjusting the Time.
+                                                              (line 315)
 * setuid:                                Setting User ID.     (line  37)
 * setutent:                              Manipulating the Database.
                                                               (line 125)
@@ -4325,8 +4350,8 @@ Function and Macro Index
                                                               (line 145)
 * stat:                                  Reading Attributes.  (line  11)
 * stat64:                                Reading Attributes.  (line  36)
-* stime:                                 Simple Calendar Time.
-                                                              (line  45)
+* stime:                                 Setting and Adjusting the Time.
+                                                              (line 283)
 * stpcpy:                                Copying Strings and Arrays.
                                                               (line 248)
 * stpncpy:                               Truncating Strings.  (line 101)
@@ -4489,8 +4514,7 @@ Function and Macro Index
                                                               (line  53)
 * thrd_yield:                            ISO C Thread Management.
                                                               (line  74)
-* time:                                  Simple Calendar Time.
-                                                              (line  33)
+* time:                                  Getting the Time.    (line   9)
 * timegm:                                Broken-down Time.    (line 195)
 * timelocal:                             Broken-down Time.    (line 183)
 * times:                                 Processor Time.      (line  49)
@@ -4505,21 +4529,21 @@ Function and Macro Index
 * totalorderf:                           FP Comparison Functions.
                                                               (line  90)
 * totalorderfN:                          FP Comparison Functions.
-                                                              (line  92)
-* totalorderfNx:                         FP Comparison Functions.
                                                               (line  93)
+* totalorderfNx:                         FP Comparison Functions.
+                                                              (line  94)
 * totalorderl:                           FP Comparison Functions.
                                                               (line  91)
 * totalordermag:                         FP Comparison Functions.
-                                                              (line 111)
-* totalordermagf:                        FP Comparison Functions.
                                                               (line 112)
-* totalordermagfN:                       FP Comparison Functions.
-                                                              (line 114)
-* totalordermagfNx:                      FP Comparison Functions.
-                                                              (line 115)
-* totalordermagl:                        FP Comparison Functions.
+* totalordermagf:                        FP Comparison Functions.
                                                               (line 113)
+* totalordermagfN:                       FP Comparison Functions.
+                                                              (line 116)
+* totalordermagfNx:                      FP Comparison Functions.
+                                                              (line 117)
+* totalordermagl:                        FP Comparison Functions.
+                                                              (line 114)
 * toupper:                               Case Conversion.     (line  32)
 * towctrans:                             Wide Character Case Conversion.
                                                               (line  38)
@@ -4580,7 +4604,7 @@ Function and Macro Index
 * updwtmp:                               Manipulating the Database.
                                                               (line 327)
 * utime:                                 File Times.          (line  50)
-* utimes:                                File Times.          (line 100)
+* utimes:                                File Times.          (line  99)
 * utmpname:                              Manipulating the Database.
                                                               (line 300)
 * utmpxname:                             XPG Functions.       (line 137)
@@ -4658,7 +4682,7 @@ Function and Macro Index
 * wcsdup:                                Copying Strings and Arrays.
                                                               (line 235)
 * wcsftime:                              Formatting Calendar Time.
-                                                              (line 462)
+                                                              (line 469)
 * wcslen:                                String Length.       (line  70)
 * wcsncasecmp:                           String/Array Comparison.
                                                               (line 186)

@@ -129,7 +129,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2019-12-30" "gcc-9.2.1" "GNU"
+.TH GCC 1 "2020-03-28" "gcc-9.3.1" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -721,7 +721,7 @@ in the following sections.
 \&\-mn_flash=\fR\fIsize\fR  \fB\-mno\-interrupts 
 \&\-mmain\-is\-OS_task  \-mrelax  \-mrmw  \-mstrict\-X  \-mtiny\-stack 
 \&\-mfract\-convert\-truncate 
-\&\-mshort\-calls  \-nodevicelib 
+\&\-mshort\-calls \-nodevicelib  \-nodevicespecs 
 \&\-Waddr\-space\-convert  \-Wmisspelled\-isr\fR
 .Sp
 \&\fIBlackfin Options\fR
@@ -4084,6 +4084,11 @@ produced for \fB\-Wno\-unknown\-warning\fR unless other diagnostics
 are being produced.  This allows the use of new \fB\-Wno\-\fR options
 with old compilers, but if something goes wrong, the compiler
 warns that an unrecognized option is present.
+.PP
+The effectiveness of some warnings depends on optimizations also being
+enabled. For example \fB\-Wsuggest\-final\-types\fR is more effective
+with link-time optimization and \fB\-Wmaybe\-uninitialized\fR will not
+warn at all unless optimization is enabled.
 .IP "\fB\-Wpedantic\fR" 4
 .IX Item "-Wpedantic"
 .PD 0
@@ -17260,8 +17265,7 @@ provided for use in debugging the compiler.
 Do not allow constant data to be placed in code sections.
 Additionally, when compiling for \s-1ELF\s0 object format give all text sections the
 \&\s-1ELF\s0 processor-specific section attribute \f(CW\*(C`SHF_ARM_PURECODE\*(C'\fR.  This option
-is only available when generating non-pic code for M\-profile targets with the
-\&\s-1MOVT\s0 instruction.
+is only available when generating non-pic code for M\-profile targets.
 .IP "\fB\-mcmse\fR" 4
 .IX Item "-mcmse"
 Generate secure code as per the \*(L"ARMv8\-M Security Extensions: Requirements on
@@ -17494,6 +17498,12 @@ Allow to use truncation instead of rounding towards zero for fractional fixed-po
 .IP "\fB\-nodevicelib\fR" 4
 .IX Item "-nodevicelib"
 Don't link against AVR-LibC's device specific library \f(CW\*(C`lib<mcu>.a\*(C'\fR.
+.IP "\fB\-nodevicespecs\fR" 4
+.IX Item "-nodevicespecs"
+Don't add \fB\-specs=device\-specs/specs\-<mcu>\fR to the compiler driver's
+command line.  The user takes responsibility for supplying the sub-processes
+like compiler proper, assembler and linker with appropriate command line
+options.
 .IP "\fB\-Waddr\-space\-convert\fR" 4
 .IX Item "-Waddr-space-convert"
 Warn about conversions between address spaces in the case where the

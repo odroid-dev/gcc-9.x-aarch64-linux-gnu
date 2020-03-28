@@ -2,9 +2,9 @@ This is libc.info, produced by makeinfo version 6.5 from libc.texinfo.
 
 This file documents the GNU C Library.
 
-   This is ‘The GNU C Library Reference Manual’, for version 2.30.
+   This is ‘The GNU C Library Reference Manual’, for version 2.31.
 
-   Copyright © 1993–2019 Free Software Foundation, Inc.
+   Copyright © 1993–2020 Free Software Foundation, Inc.
 
    Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
@@ -41,6 +41,8 @@ START-INFO-DIR-ENTRY
 * CLK_TCK: (libc)Processor Time.
 * CLOCAL: (libc)Control Modes.
 * CLOCKS_PER_SEC: (libc)CPU Time.
+* CLOCK_MONOTONIC: (libc)Getting the Time.
+* CLOCK_REALTIME: (libc)Getting the Time.
 * COLL_WEIGHTS_MAX: (libc)Utility Limits.
 * CPU_CLR: (libc)CPU Affinity.
 * CPU_ISSET: (libc)CPU Affinity.
@@ -512,8 +514,8 @@ START-INFO-DIR-ENTRY
 * acosl: (libc)Inverse Trig Functions.
 * addmntent: (libc)mtab.
 * addseverity: (libc)Adding Severity Classes.
-* adjtime: (libc)High-Resolution Calendar.
-* adjtimex: (libc)High-Resolution Calendar.
+* adjtime: (libc)Setting and Adjusting the Time.
+* adjtimex: (libc)Setting and Adjusting the Time.
 * aio_cancel64: (libc)Cancel AIO Operations.
 * aio_cancel: (libc)Cancel AIO Operations.
 * aio_error64: (libc)Status of AIO Operations.
@@ -695,6 +697,9 @@ START-INFO-DIR-ENTRY
 * clearerr: (libc)Error Recovery.
 * clearerr_unlocked: (libc)Error Recovery.
 * clock: (libc)CPU Time.
+* clock_getres: (libc)Getting the Time.
+* clock_gettime: (libc)Getting the Time.
+* clock_settime: (libc)Setting and Adjusting the Time.
 * clog10: (libc)Exponents and Logarithms.
 * clog10f: (libc)Exponents and Logarithms.
 * clog10fN: (libc)Exponents and Logarithms.
@@ -790,7 +795,7 @@ START-INFO-DIR-ENTRY
 * dcngettext: (libc)Advanced gettext functions.
 * ddivl: (libc)Misc FP Arithmetic.
 * dgettext: (libc)Translation with gettext.
-* difftime: (libc)Elapsed Time.
+* difftime: (libc)Calculating Elapsed Time.
 * dirfd: (libc)Opening a Directory.
 * dirname: (libc)Finding Tokens in a String.
 * div: (libc)Integer Division.
@@ -1153,7 +1158,7 @@ START-INFO-DIR-ENTRY
 * getsubopt: (libc)Suboptions.
 * gettext: (libc)Translation with gettext.
 * gettid: (libc)Process Identification.
-* gettimeofday: (libc)High-Resolution Calendar.
+* gettimeofday: (libc)Getting the Time.
 * getuid: (libc)Reading Persona.
 * getumask: (libc)Setting Permissions.
 * getutent: (libc)Manipulating the Database.
@@ -1486,8 +1491,8 @@ START-INFO-DIR-ENTRY
 * nrand48_r: (libc)SVID Random.
 * ntohl: (libc)Byte Order.
 * ntohs: (libc)Byte Order.
-* ntp_adjtime: (libc)High Accuracy Clock.
-* ntp_gettime: (libc)High Accuracy Clock.
+* ntp_adjtime: (libc)Setting and Adjusting the Time.
+* ntp_gettime: (libc)Setting and Adjusting the Time.
 * obstack_1grow: (libc)Growing Objects.
 * obstack_1grow_fast: (libc)Extra Fast Growing.
 * obstack_alignment_mask: (libc)Obstacks Data Alignment.
@@ -1551,6 +1556,7 @@ START-INFO-DIR-ENTRY
 * printf_size: (libc)Predefined Printf Handlers.
 * printf_size_info: (libc)Predefined Printf Handlers.
 * psignal: (libc)Signal Messages.
+* pthread_clockjoin_np: (libc)Default Thread Attributes.
 * pthread_cond_clockwait: (libc)Default Thread Attributes.
 * pthread_getattr_default_np: (libc)Default Thread Attributes.
 * pthread_getspecific: (libc)Thread-specific Data.
@@ -1560,6 +1566,8 @@ START-INFO-DIR-ENTRY
 * pthread_rwlock_clockwrlock: (libc)Default Thread Attributes.
 * pthread_setattr_default_np: (libc)Default Thread Attributes.
 * pthread_setspecific: (libc)Thread-specific Data.
+* pthread_timedjoin_np: (libc)Default Thread Attributes.
+* pthread_tryjoin_np: (libc)Default Thread Attributes.
 * ptsname: (libc)Allocation.
 * ptsname_r: (libc)Allocation.
 * putc: (libc)Simple Output.
@@ -1735,7 +1743,7 @@ START-INFO-DIR-ENTRY
 * setsockopt: (libc)Socket Option Functions.
 * setstate: (libc)BSD Random.
 * setstate_r: (libc)BSD Random.
-* settimeofday: (libc)High-Resolution Calendar.
+* settimeofday: (libc)Setting and Adjusting the Time.
 * setuid: (libc)Setting User ID.
 * setutent: (libc)Manipulating the Database.
 * setutxent: (libc)XPG Functions.
@@ -1800,7 +1808,7 @@ START-INFO-DIR-ENTRY
 * ssignal: (libc)Basic Signal Handling.
 * stat64: (libc)Reading Attributes.
 * stat: (libc)Reading Attributes.
-* stime: (libc)Simple Calendar Time.
+* stime: (libc)Setting and Adjusting the Time.
 * stpcpy: (libc)Copying Strings and Arrays.
 * stpncpy: (libc)Truncating Strings.
 * strcasecmp: (libc)String/Array Comparison.
@@ -1907,7 +1915,7 @@ START-INFO-DIR-ENTRY
 * thrd_join: (libc)ISO C Thread Management.
 * thrd_sleep: (libc)ISO C Thread Management.
 * thrd_yield: (libc)ISO C Thread Management.
-* time: (libc)Simple Calendar Time.
+* time: (libc)Getting the Time.
 * timegm: (libc)Broken-down Time.
 * timelocal: (libc)Broken-down Time.
 * times: (libc)Processor Time.
@@ -2084,6 +2092,360 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
+File: libc.info,  Node: Configuring and compiling,  Next: Running make install,  Up: Installation
+
+C.1 Configuring and compiling the GNU C Library
+===============================================
+
+The GNU C Library cannot be compiled in the source directory.  You must
+build it in a separate build directory.  For example, if you have
+unpacked the GNU C Library sources in ‘/src/gnu/glibc-VERSION’, create a
+directory ‘/src/gnu/glibc-build’ to put the object files in.  This
+allows removing the whole build directory in case an error occurs, which
+is the safest way to get a fresh start and should always be done.
+
+   From your object directory, run the shell script ‘configure’ located
+at the top level of the source tree.  In the scenario above, you’d type
+
+     $ ../glibc-VERSION/configure ARGS...
+
+   Please note that even though you’re building in a separate build
+directory, the compilation may need to create or modify files and
+directories in the source directory.
+
+‘configure’ takes many options, but the only one that is usually
+mandatory is ‘--prefix’.  This option tells ‘configure’ where you want
+the GNU C Library installed.  This defaults to ‘/usr/local’, but the
+normal setting to install as the standard system library is
+‘--prefix=/usr’ for GNU/Linux systems and ‘--prefix=’ (an empty prefix)
+for GNU/Hurd systems.
+
+   It may also be useful to pass ‘CC=COMPILER’ and ‘CFLAGS=FLAGS’
+arguments to ‘configure’.  ‘CC’ selects the C compiler that will be
+used, and ‘CFLAGS’ sets optimization options for the compiler.  Any
+compiler options required for all compilations, such as options
+selecting an ABI or a processor for which to generate code, should be
+included in ‘CC’.  Options that may be overridden by the GNU C Library
+build system for particular files, such as for optimization and
+debugging, should go in ‘CFLAGS’.  The default value of ‘CFLAGS’ is ‘-g
+-O2’, and the GNU C Library cannot be compiled without optimization, so
+if ‘CFLAGS’ is specified it must enable optimization.  For example:
+
+     $ ../glibc-VERSION/configure CC="gcc -m32" CFLAGS="-O3"
+
+   The following list describes all of the available options for
+‘configure’:
+
+‘--prefix=DIRECTORY’
+     Install machine-independent data files in subdirectories of
+     ‘DIRECTORY’.  The default is to install in ‘/usr/local’.
+
+‘--exec-prefix=DIRECTORY’
+     Install the library and other machine-dependent files in
+     subdirectories of ‘DIRECTORY’.  The default is to the ‘--prefix’
+     directory if that option is specified, or ‘/usr/local’ otherwise.
+
+‘--with-headers=DIRECTORY’
+     Look for kernel header files in DIRECTORY, not ‘/usr/include’.  The
+     GNU C Library needs information from the kernel’s header files
+     describing the interface to the kernel.  The GNU C Library will
+     normally look in ‘/usr/include’ for them, but if you specify this
+     option, it will look in DIRECTORY instead.
+
+     This option is primarily of use on a system where the headers in
+     ‘/usr/include’ come from an older version of the GNU C Library.
+     Conflicts can occasionally happen in this case.  You can also use
+     this option if you want to compile the GNU C Library with a newer
+     set of kernel headers than the ones found in ‘/usr/include’.
+
+‘--enable-kernel=VERSION’
+     This option is currently only useful on GNU/Linux systems.  The
+     VERSION parameter should have the form X.Y.Z and describes the
+     smallest version of the Linux kernel the generated library is
+     expected to support.  The higher the VERSION number is, the less
+     compatibility code is added, and the faster the code gets.
+
+‘--with-binutils=DIRECTORY’
+     Use the binutils (assembler and linker) in ‘DIRECTORY’, not the
+     ones the C compiler would default to.  You can use this option if
+     the default binutils on your system cannot deal with all the
+     constructs in the GNU C Library.  In that case, ‘configure’ will
+     detect the problem and suppress these constructs, so that the
+     library will still be usable, but functionality may be lost—for
+     example, you can’t build a shared libc with old binutils.
+
+‘--with-nonshared-cflags=CFLAGS’
+     Use additional compiler flags CFLAGS to build the parts of the
+     library which are always statically linked into applications and
+     libraries even with shared linking (that is, the object files
+     contained in ‘lib*_nonshared.a’ libraries).  The build process will
+     automatically use the appropriate flags, but this option can be
+     used to set additional flags required for building applications and
+     libraries, to match local policy.  For example, if such a policy
+     requires that all code linked into applications must be built with
+     source fortification,
+     ‘--with-nonshared-cflags=-Wp,-D_FORTIFY_SOURCE=2’ will make sure
+     that the objects in ‘libc_nonshared.a’ are compiled with this flag
+     (although this will not affect the generated code in this
+     particular case and potentially change debugging information and
+     metadata only).
+
+‘--disable-shared’
+     Don’t build shared libraries even if it is possible.  Not all
+     systems support shared libraries; you need ELF support and
+     (currently) the GNU linker.
+
+‘--enable-static-pie’
+     Enable static position independent executable (static PIE) support.
+     Static PIE is similar to static executable, but can be loaded at
+     any address without help from a dynamic linker.  All static
+     programs as well as static tests are built as static PIE, except
+     for those marked with no-pie.  The resulting glibc can be used with
+     the GCC option, -static-pie, which is available with GCC 8 or
+     above, to create static PIE. This option also implies that glibc
+     programs and tests are created as dynamic position independent
+     executables (PIE) by default.
+
+‘--enable-cet’
+     Enable Intel Control-flow Enforcement Technology (CET) support.
+     When the GNU C Library is built with ‘--enable-cet’, the resulting
+     library is protected with indirect branch tracking (IBT) and shadow
+     stack (SHSTK).  When CET is enabled, the GNU C Library is
+     compatible with all existing executables and shared libraries.
+     This feature is currently supported on i386, x86_64 and x32 with
+     GCC 8 and binutils 2.29 or later.  Note that when CET is enabled,
+     the GNU C Library requires CPUs capable of multi-byte NOPs, like
+     x86-64 processors as well as Intel Pentium Pro or newer.
+
+     NOTE: ‘--enable-cet’ has been tested for i686, x86_64 and x32 on
+     non-CET processors.  ‘--enable-cet’ has been tested for x86_64 and
+     x32 on CET SDVs, but Intel CET support hasn’t been validated for
+     i686.
+
+‘--disable-profile’
+     Don’t build libraries with profiling information.  You may want to
+     use this option if you don’t plan to do profiling.
+
+‘--enable-static-nss’
+     Compile static versions of the NSS (Name Service Switch) libraries.
+     This is not recommended because it defeats the purpose of NSS; a
+     program linked statically with the NSS libraries cannot be
+     dynamically reconfigured to use a different name database.
+
+‘--enable-hardcoded-path-in-tests’
+     By default, dynamic tests are linked to run with the installed C
+     library.  This option hardcodes the newly built C library path in
+     dynamic tests so that they can be invoked directly.
+
+‘--disable-timezone-tools’
+     By default, timezone related utilities (‘zic’, ‘zdump’, and
+     ‘tzselect’) are installed with the GNU C Library.  If you are
+     building these independently (e.g.  by using the ‘tzcode’ package),
+     then this option will allow disabling the install of these.
+
+     Note that you need to make sure the external tools are kept in sync
+     with the versions that the GNU C Library expects as the data
+     formats may change over time.  Consult the ‘timezone’ subdirectory
+     for more details.
+
+‘--enable-stack-protector’
+‘--enable-stack-protector=strong’
+‘--enable-stack-protector=all’
+     Compile the C library and all other parts of the glibc package
+     (including the threading and math libraries, NSS modules, and
+     transliteration modules) using the GCC ‘-fstack-protector’,
+     ‘-fstack-protector-strong’ or ‘-fstack-protector-all’ options to
+     detect stack overruns.  Only the dynamic linker and a small number
+     of routines called directly from assembler are excluded from this
+     protection.
+
+‘--enable-bind-now’
+     Disable lazy binding for installed shared objects and programs.
+     This provides additional security hardening because it enables full
+     RELRO and a read-only global offset table (GOT), at the cost of
+     slightly increased program load times.
+
+‘--enable-pt_chown’
+     The file ‘pt_chown’ is a helper binary for ‘grantpt’ (*note
+     Pseudo-Terminals: Allocation.) that is installed setuid root to fix
+     up pseudo-terminal ownership.  It is not built by default because
+     systems using the Linux kernel are commonly built with the ‘devpts’
+     filesystem enabled and mounted at ‘/dev/pts’, which manages
+     pseudo-terminal ownership automatically.  By using
+     ‘--enable-pt_chown’, you may build ‘pt_chown’ and install it setuid
+     and owned by ‘root’.  The use of ‘pt_chown’ introduces additional
+     security risks to the system and you should enable it only if you
+     understand and accept those risks.
+
+‘--disable-werror’
+     By default, the GNU C Library is built with ‘-Werror’.  If you wish
+     to build without this option (for example, if building with a newer
+     version of GCC than this version of the GNU C Library was tested
+     with, so new warnings cause the build with ‘-Werror’ to fail), you
+     can configure with ‘--disable-werror’.
+
+‘--disable-mathvec’
+     By default for x86_64, the GNU C Library is built with the vector
+     math library.  Use this option to disable the vector math library.
+
+‘--enable-tunables’
+     Tunables support allows additional library parameters to be
+     customized at runtime.  This feature is enabled by default.  This
+     option can take the following values:
+
+     ‘yes’
+          This is the default if no option is passed to configure.  This
+          enables tunables and selects the default frontend (currently
+          ‘valstring’).
+
+     ‘no’
+          This option disables tunables.
+
+     ‘valstring’
+          This enables tunables and selects the ‘valstring’ frontend for
+          tunables.  This frontend allows users to specify tunables as a
+          colon-separated list in a single environment variable
+          ‘GLIBC_TUNABLES’.
+
+‘--enable-obsolete-nsl’
+     By default, libnsl is only built as shared library for backward
+     compatibility and the NSS modules libnss_compat, libnss_nis and
+     libnss_nisplus are not built at all.  Use this option to enable
+     libnsl with all depending NSS modules and header files.  For
+     architectures and ABIs that have been added after version 2.28 of
+     the GNU C Library this option is not available, and the libnsl
+     compatibility library is not built.
+
+‘--disable-crypt’
+     Do not install the passphrase-hashing library ‘libcrypt’ or the
+     header file ‘crypt.h’.  ‘unistd.h’ will still declare the function
+     ‘crypt’.  Using this option does not change the set of programs
+     that may need to be linked with ‘-lcrypt’; it only means that the
+     GNU C Library will not provide that library.
+
+     This option is for hackers and distributions experimenting with
+     independently-maintained implementations of libcrypt.  It may
+     become the default in a future release.
+
+‘--disable-experimental-malloc’
+     By default, a per-thread cache is enabled in ‘malloc’.  While this
+     cache can be disabled on a per-application basis using tunables
+     (set glibc.malloc.tcache_count to zero), this option can be used to
+     remove it from the build completely.
+
+‘--build=BUILD-SYSTEM’
+‘--host=HOST-SYSTEM’
+     These options are for cross-compiling.  If you specify both options
+     and BUILD-SYSTEM is different from HOST-SYSTEM, ‘configure’ will
+     prepare to cross-compile the GNU C Library from BUILD-SYSTEM to be
+     used on HOST-SYSTEM.  You’ll probably need the ‘--with-headers’
+     option too, and you may have to override CONFIGURE’s selection of
+     the compiler and/or binutils.
+
+     If you only specify ‘--host’, ‘configure’ will prepare for a native
+     compile but use what you specify instead of guessing what your
+     system is.  This is most useful to change the CPU submodel.  For
+     example, if ‘configure’ guesses your machine as ‘i686-pc-linux-gnu’
+     but you want to compile a library for 586es, give
+     ‘--host=i586-pc-linux-gnu’ or just ‘--host=i586-linux’ and add the
+     appropriate compiler flags (‘-mcpu=i586’ will do the trick) to
+     ‘CC’.
+
+     If you specify just ‘--build’, ‘configure’ will get confused.
+
+‘--with-pkgversion=VERSION’
+     Specify a description, possibly including a build number or build
+     date, of the binaries being built, to be included in ‘--version’
+     output from programs installed with the GNU C Library.  For
+     example, ‘--with-pkgversion='FooBar GNU/Linux glibc build 123'’.
+     The default value is ‘GNU libc’.
+
+‘--with-bugurl=URL’
+     Specify the URL that users should visit if they wish to report a
+     bug, to be included in ‘--help’ output from programs installed with
+     the GNU C Library.  The default value refers to the main
+     bug-reporting information for the GNU C Library.
+
+   To build the library and related programs, type ‘make’.  This will
+produce a lot of output, some of which may look like errors from ‘make’
+but aren’t.  Look for error messages from ‘make’ containing ‘***’.
+Those indicate that something is seriously wrong.
+
+   The compilation process can take a long time, depending on the
+configuration and the speed of your machine.  Some complex modules may
+take a very long time to compile, as much as several minutes on slower
+machines.  Do not panic if the compiler appears to hang.
+
+   If you want to run a parallel make, simply pass the ‘-j’ option with
+an appropriate numeric parameter to ‘make’.  You need a recent GNU
+‘make’ version, though.
+
+   To build and run test programs which exercise some of the library
+facilities, type ‘make check’.  If it does not complete successfully, do
+not use the built library, and report a bug after verifying that the
+problem is not already known.  *Note Reporting Bugs::, for instructions
+on reporting bugs.  Note that some of the tests assume they are not
+being run by ‘root’.  We recommend you compile and test the GNU C
+Library as an unprivileged user.
+
+   Before reporting bugs make sure there is no problem with your system.
+The tests (and later installation) use some pre-existing files of the
+system such as ‘/etc/passwd’, ‘/etc/nsswitch.conf’ and others.  These
+files must all contain correct and sensible content.
+
+   Normally, ‘make check’ will run all the tests before reporting all
+problems found and exiting with error status if any problems occurred.
+You can specify ‘stop-on-test-failure=y’ when running ‘make check’ to
+make the test run stop and exit with an error status immediately when a
+failure occurs.
+
+   To format the ‘GNU C Library Reference Manual’ for printing, type
+‘make dvi’.  You need a working TeX installation to do this.  The
+distribution builds the on-line formatted version of the manual, as Info
+files, as part of the build process.  You can build them manually with
+‘make info’.
+
+   The library has a number of special-purpose configuration parameters
+which you can find in ‘Makeconfig’.  These can be overwritten with the
+file ‘configparms’.  To change them, create a ‘configparms’ in your
+build directory and add values as appropriate for your system.  The file
+is included and parsed by ‘make’ and has to follow the conventions for
+makefiles.
+
+   It is easy to configure the GNU C Library for cross-compilation by
+setting a few variables in ‘configparms’.  Set ‘CC’ to the
+cross-compiler for the target you configured the library for; it is
+important to use this same ‘CC’ value when running ‘configure’, like
+this: ‘configure TARGET CC=TARGET-gcc’.  Set ‘BUILD_CC’ to the compiler
+to use for programs run on the build system as part of compiling the
+library.  You may need to set ‘AR’ to cross-compiling versions of ‘ar’
+if the native tools are not configured to work with object files for the
+target you configured for.  When cross-compiling the GNU C Library, it
+may be tested using ‘make check
+test-wrapper="SRCDIR/scripts/cross-test-ssh.sh HOSTNAME"’, where SRCDIR
+is the absolute directory name for the main source directory and
+HOSTNAME is the host name of a system that can run the newly built
+binaries of the GNU C Library.  The source and build directories must be
+visible at the same locations on both the build system and HOSTNAME.
+
+   In general, when testing the GNU C Library, ‘test-wrapper’ may be set
+to the name and arguments of any program to run newly built binaries.
+This program must preserve the arguments to the binary being run, its
+working directory and the standard input, output and error file
+descriptors.  If ‘TEST-WRAPPER env’ will not work to run a program with
+environment variables set, then ‘test-wrapper-env’ must be set to a
+program that runs a newly built program with environment variable
+assignments in effect, those assignments being specified as ‘VAR=VALUE’
+before the name of the program to be run.  If multiple assignments to
+the same variable are specified, the last assignment specified must take
+precedence.  Similarly, if ‘TEST-WRAPPER env -i’ will not work to run a
+program with an environment completely empty of variables except those
+directly assigned, then ‘test-wrapper-env-only’ must be set; its use has
+the same syntax as ‘test-wrapper-env’, the only difference in its
+semantics being starting with an empty set of environment variables
+rather than the ambient set.
+
+
 File: libc.info,  Node: Running make install,  Next: Tools for Compilation,  Prev: Configuring and compiling,  Up: Installation
 
 C.2 Installing the C Library
@@ -2192,7 +2554,7 @@ build the GNU C Library:
      GCC 6.2 or higher is required.  In general it is recommended to use
      the newest version of the compiler that is known to work for
      building the GNU C Library, as newer compilers usually produce
-     better code.  As of release time, GCC 9.1.1 is the newest compiler
+     better code.  As of release time, GCC 9.2.1 is the newest compiler
      verified to work to build the GNU C Library.
 
      For multi-arch support it is recommended to use a GCC which has
@@ -2214,7 +2576,7 @@ build the GNU C Library:
 
      You must use GNU ‘binutils’ (as and ld) to build the GNU C Library.
      No other assembler or linker has the necessary functionality at the
-     moment.  As of release time, GNU ‘binutils’ 2.31.1 is the newest
+     moment.  As of release time, GNU ‘binutils’ 2.32 is the newest
      verified to work to build the GNU C Library.
 
    • GNU ‘texinfo’ 4.7 or later
@@ -2231,20 +2593,20 @@ build the GNU C Library:
      ‘awk’ is used in several places to generate files.  Some ‘gawk’
      extensions are used, including the ‘asorti’ function, which was
      introduced in version 3.1.2 of ‘gawk’.  As of release time, ‘gawk’
-     version 4.2.1 is the newest verified to work to build the GNU C
+     version 5.0.1 is the newest verified to work to build the GNU C
      Library.
 
    • GNU ‘bison’ 2.7 or later
 
      ‘bison’ is used to generate the ‘yacc’ parser code in the ‘intl’
-     subdirectory.  As of release time, ‘bison’ version 3.0.5 is the
+     subdirectory.  As of release time, ‘bison’ version 3.4.1 is the
      newest verified to work to build the GNU C Library.
 
    • Perl 5
 
      Perl is not required, but if present it is used in some tests and
      the ‘mtrace’ program, to build the GNU C Library manual.  As of
-     release time ‘perl’ version 5.28.2 is the newest verified to work
+     release time ‘perl’ version 5.30.1 is the newest verified to work
      to build the GNU C Library.
 
    • GNU ‘sed’ 3.02 or newer
@@ -2377,7 +2739,7 @@ library, you really only need to narrow it down to one library function
 call, if possible.  This should not be too difficult.
 
    The final step when you have a simple test case is to report the bug.
-Do this at <http://www.gnu.org/software/libc/bugs.html>.
+Do this at <https://www.gnu.org/software/libc/bugs.html>.
 
    If you are not sure how a function should behave, and this manual
 doesn’t tell you, that’s a bug in the manual.  Report that too!  If the
@@ -3168,6 +3530,10 @@ order.
    • Miles Bader for writing the ‘argp’ argument-parsing package, and
      the ‘argz’/‘envz’ interfaces.
 
+   • Ralf Bächle for contributing ‘fpu_control.h’, ‘regdef.h’,
+     ‘sgidefs.h’, ‘sys/asm.h’, and ‘sys/regdef.h’ under the
+     ‘sysdeps/mips’ directory.
+
    • Jeff Bailey for his maintainership of the HPPA architecture.
 
    • Petr Baudis for bug fixes and testing.
@@ -3177,7 +3543,7 @@ order.
    • Stephen R. van den Berg for contributing a highly-optimized
      ‘strstr’ function.
 
-   • Ondrej Bilka for contributing optimized string routines for x64 and
+   • Ondřej Bílka for contributing optimized string routines for x64 and
      various fixes.
 
    • Eric Blake for adding O(n) implementations of ‘memmem’, ‘strstr’
@@ -3199,6 +3565,8 @@ order.
    • Rogerio Alves Cardoso for various fixes to PowerPC.
 
    • Paul Clarke for optimized functions on PowerPC.
+
+   • Mike Crowe for various fixes.
 
    • Palmer Dabbelt for contributing the port to Linux/RISC-V.
 
@@ -3246,6 +3614,11 @@ order.
      installed headers for low-level platform-specific functionality and
      one such for PowerPC and various fixes.
 
+   • Olaf Flebbe and Ralf Bächle for contributing
+     ‘sysdeps/mips/fpu_control.h’.
+
+   • Alistair Francis for Y2038 related fixes.
+
    • Mike Frysinger for his maintaining of the IA64 architecture and for
      testing and bug fixing.
 
@@ -3270,6 +3643,8 @@ order.
 
    • Bruno Haible for his improvements to the ‘iconv’ and locale
      implementations.
+
+   • Mao Han for the C-SKY port.
 
    • Richard Henderson for the port to Linux on Alpha
      (‘alpha-ANYTHING-linux’) and software floating-point support.
@@ -3342,13 +3717,15 @@ order.
      implementations, for implementing Intel Control-Flow Enforcement
      Technology, and many bug fixes.
 
-   • Rafal Luzynski for contributing support for two grammatical forms
+   • Rafał Lużyński for contributing support for two grammatical forms
      of month names, and for various fixes to locales.
 
    • Luis Machado for optimized functions on PowerPC.
 
    • David J. MacKenzie for his contribution to the ‘getopt’ function
      and writing the ‘tar.h’ header.
+
+   • Lukasz Majewski for Y2038 related fixes.
 
    • Greg McGary for adding runtime support for bounds checking.
 
@@ -3461,6 +3838,8 @@ order.
 
    • Marcus Shawcroft for contributing the AArch64 port.
 
+   • TAMUKI Shoichi for various fixes.
+
    • Franz Sirl for various fixes.
 
    • Jes Sorensen for porting to Linux on IA64 (‘ia64-ANYTHING-linux’).
@@ -3502,6 +3881,8 @@ order.
 
    • Adhemerval Zanella for optimized functions on PowerPC, ISO C
      threads support and various fixes.
+
+   • Xuelei Zhang for optimized functions on AArch64.
 
    Some code in the GNU C Library comes from other projects and might be
 under a different license:
@@ -3642,7 +4023,7 @@ paid or pay the authors to work on it.
 
    The Free Software Foundation maintains a list of free documentation
 published by other publishers, at
-<http://www.fsf.org/doc/other-free-books.html>.
+<https://www.fsf.org/doc/other-free-books.html>.
 
 
 File: libc.info,  Node: Copying,  Next: Documentation License,  Prev: Free Manuals,  Up: Top
@@ -4701,6 +5082,7 @@ Concept Index
 * Advertise error:                       Error Codes.         (line 718)
 * alarm signal:                          Alarm Signals.       (line  20)
 * alarms, setting:                       Setting an Alarm.    (line  10)
+* aliases:                               NSS Basics.          (line  24)
 * alignment (in obstacks):               Obstacks Data Alignment.
                                                               (line   6)
 * alignment (with malloc):               Aligned Memory Blocks.
@@ -4830,7 +5212,7 @@ Concept Index
 * Broken pipe:                           Error Codes.         (line 202)
 * broken pipe signal:                    Operation Error Signals.
                                                               (line  14)
-* broken-down time:                      Calendar Time.       (line  26)
+* broken-down time:                      Time Basics.         (line  52)
 * broken-down time <1>:                  Broken-down Time.    (line   6)
 * BSD Unix:                              Berkeley Unix.       (line   6)
 * buffering of streams:                  Stream Buffering.    (line   6)
@@ -4846,7 +5228,8 @@ Concept Index
 * C++ streams:                           Streams and I18N.    (line  30)
 * calendar time:                         Time Basics.         (line  13)
 * calendar time and broken-down time:    Broken-down Time.    (line   6)
-* calendar, Gregorian:                   Calendar Time.       (line  26)
+* calendar time, simple:                 Time Basics.         (line  45)
+* calendar, Gregorian:                   Time Basics.         (line  52)
 * call once:                             Call Once.           (line   6)
 * calling variadic functions:            Calling Variadics.   (line   6)
 * Can not access a needed shared library: Error Codes.        (line 746)
@@ -4887,9 +5270,13 @@ Concept Index
 * cleaning up a stream:                  Linked Channels.     (line  15)
 * clearing terminal input queue:         Line Control.        (line  67)
 * client:                                Connections.         (line   6)
-* clock ticks:                           Processor And CPU Time.
+* clock ticks:                           Time Types.          (line  15)
+* clock ticks <1>:                       Processor And CPU Time.
                                                               (line  19)
-* clock, high accuracy:                  High Accuracy Clock. (line   6)
+* clock, disciplining:                   Setting and Adjusting the Time.
+                                                              (line  60)
+* clock, high accuracy:                  Setting and Adjusting the Time.
+                                                              (line  60)
 * close-on-exec (file descriptor flag):  Descriptor Flags.    (line  54)
 * closing a file descriptor:             Opening and Closing Files.
                                                               (line   6)
@@ -4991,7 +5378,7 @@ Concept Index
                                                               (line   9)
 * corrupt:                               Unsafe Features.     (line  26)
 * cpu priority:                          Priority.            (line   6)
-* CPU time:                              Time Basics.         (line  37)
+* CPU time:                              Time Basics.         (line  57)
 * CPU time <1>:                          Processor And CPU Time.
                                                               (line  19)
 * CPU time <2>:                          Processor Time.      (line  10)
@@ -5103,7 +5490,6 @@ Concept Index
 * EINTR, and restarting interrupted primitives: Interrupted Primitives.
                                                               (line  47)
 * elapsed time:                          Time Basics.         (line  24)
-* elapsed time <1>:                      Elapsed Time.        (line   6)
 * elision tunables:                      Elision Tunables.    (line   6)
 * end of file, on a stream:              EOF and Errors.      (line   6)
 * end-of-file, on a file descriptor:     I/O Primitives.      (line  26)
@@ -5122,8 +5508,8 @@ Concept Index
 * EOF character:                         Editing Characters.  (line  11)
 * EOL character:                         Editing Characters.  (line  24)
 * EOL2 character:                        Editing Characters.  (line  38)
-* epoch:                                 Simple Calendar Time.
-                                                              (line  10)
+* epoch:                                 Time Basics.         (line  45)
+* epoch <1>:                             Time Types.          (line  36)
 * ERASE character:                       Editing Characters.  (line  51)
 * errno:                                 System Calls.        (line  59)
 * error codes:                           Error Reporting.     (line   6)
@@ -5262,7 +5648,7 @@ Concept Index
 * graphic character <1>:                 Classification of Wide Characters.
                                                               (line 151)
 * Gratuitous error:                      Error Codes.         (line 576)
-* Gregorian calendar:                    Calendar Time.       (line  26)
+* Gregorian calendar:                    Time Basics.         (line  52)
 * group:                                 NSS Basics.          (line  24)
 * group database:                        Group Database.      (line   6)
 * group ID:                              User and Group IDs.  (line  12)
@@ -5270,6 +5656,7 @@ Concept Index
 * group owner of a file:                 File Owner.          (line   6)
 * grouping of digits:                    General Numeric.     (line  28)
 * growing objects (in obstacks):         Growing Objects.     (line   6)
+* gshadow:                               NSS Basics.          (line  24)
 * handling multiple signals:             Merged Signals.      (line   6)
 * hangup signal:                         Termination Signals. (line  77)
 * hard limit:                            Limits on Resources. (line  24)
@@ -5294,7 +5681,6 @@ Concept Index
 * hierarchy, directory:                  Working with Directory Trees.
                                                               (line   6)
 * high-priority data:                    Out-of-Band Data.    (line   6)
-* high-resolution time:                  Calendar Time.       (line  20)
 * holes in files:                        File Position Primitive.
                                                               (line  63)
 * home directory:                        Standard Environment.
@@ -5348,6 +5734,7 @@ Concept Index
 * infinity:                              Infinity and NaN.    (line   6)
 * init:                                  Conditionally Safe Features.
                                                               (line  16)
+* initgroups:                            NSS Basics.          (line  24)
 * initial signal actions:                Initial Signal Actions.
                                                               (line   6)
 * inode number:                          Attribute Meanings.  (line 195)
@@ -5470,6 +5857,7 @@ Concept Index
                                                               (line 109)
 * LD_PRELOAD and malloc:                 Replacing malloc.    (line   6)
 * leap second:                           Broken-down Time.    (line  29)
+* leap seconds:                          Time Basics.         (line  45)
 * length of string:                      Representation of Strings.
                                                               (line  61)
 * Level 2 halted:                        Error Codes.         (line 674)
@@ -5511,7 +5899,7 @@ Concept Index
 * local namespace, for sockets:          Local Namespace.     (line   6)
 * local network address number:          Abstract Host Addresses.
                                                               (line   9)
-* local time:                            Calendar Time.       (line  26)
+* local time:                            Time Basics.         (line  52)
 * locale:                                Other Safety Remarks.
                                                               (line  10)
 * locale categories:                     Locale Categories.   (line   6)
@@ -5586,6 +5974,7 @@ Concept Index
 * modem status lines:                    Control Modes.       (line  22)
 * monetary value formatting:             The Lame Way to Locale Data.
                                                               (line  13)
+* monotonic time:                        Getting the Time.    (line  56)
 * MPK:                                   Memory Protection.   (line 123)
 * MT-Safe:                               POSIX Safety Concepts.
                                                               (line  16)
@@ -5714,7 +6103,7 @@ Concept Index
 * option parsing with argp:              Argp.                (line   6)
 * optional arguments:                    Variadic Functions.  (line   6)
 * optional POSIX features:               System Options.      (line   6)
-* orientation, stream:                   Opening Streams.     (line  99)
+* orientation, stream:                   Opening Streams.     (line 101)
 * orientation, stream <1>:               Streams and I18N.    (line  37)
 * orphaned process group:                Orphaned Process Groups.
                                                               (line   6)
@@ -5832,7 +6221,7 @@ Concept Index
 * process priority:                      Priority.            (line   6)
 * process signal mask:                   Process Signal Mask. (line   6)
 * process termination:                   Program Termination. (line   6)
-* processor time:                        Time Basics.         (line  44)
+* processor time:                        Time Basics.         (line  65)
 * processor time <1>:                    Processor Time.      (line  10)
 * profiling alarm signal:                Alarm Signals.       (line  32)
 * profiling timer:                       Setting an Alarm.    (line  22)
@@ -5870,6 +6259,7 @@ Concept Index
 * pthread mutex tunables:                POSIX Thread Tunables.
                                                               (line   6)
 * pthreads:                              POSIX Threads.       (line   6)
+* publickey:                             NSS Basics.          (line  24)
 * punctuation character:                 Classification of Characters.
                                                               (line  82)
 * punctuation character <1>:             Classification of Wide Characters.
@@ -5961,6 +6351,7 @@ Concept Index
 * search function (for arrays):          Array Search Function.
                                                               (line   6)
 * search functions (for strings):        Search Functions.    (line   8)
+* seconds, leap:                         Time Basics.         (line  45)
 * seed (for random numbers):             Pseudo-Random Numbers.
                                                               (line   6)
 * seeking on a file descriptor:          File Position Primitive.
@@ -6034,7 +6425,8 @@ Concept Index
                                                               (line  11)
 * SIGTTOU, from background job:          Access to the Terminal.
                                                               (line  18)
-* simple time:                           Calendar Time.       (line  13)
+* simple calendar time:                  Time Basics.         (line  45)
+* simple time:                           Time Basics.         (line  45)
 * single-byte string:                    Representation of Strings.
                                                               (line  71)
 * single-call functions:                 Call Once.           (line   6)
@@ -6131,7 +6523,7 @@ Concept Index
 * storage allocating:                    Storage Allocation.  (line   6)
 * storage allocation:                    Memory.              (line   6)
 * stream (sockets):                      Socket Concepts.     (line  12)
-* stream orientation:                    Opening Streams.     (line  99)
+* stream orientation:                    Opening Streams.     (line 101)
 * stream orientation <1>:                Streams and I18N.    (line  37)
 * stream, for I/O to a string:           String Streams.      (line   6)
 * streams and descriptors:               Stream/Descriptor Precautions.
@@ -6250,7 +6642,8 @@ Concept Index
                                                               (line  68)
 * threads:                               Streams and Threads. (line   6)
 * threads <1>:                           Threads.             (line   6)
-* ticks, clock:                          Processor And CPU Time.
+* ticks, clock:                          Time Types.          (line  15)
+* ticks, clock <1>:                      Processor And CPU Time.
                                                               (line  19)
 * tilde expansion:                       Expansion Stages.    (line   9)
 * time:                                  Time Basics.         (line   6)
@@ -6258,15 +6651,16 @@ Concept Index
 * time zone:                             TZ Variable.         (line   9)
 * time zone database:                    TZ Variable.         (line 143)
 * time, elapsed:                         Time Basics.         (line  24)
-* time, high precision:                  High Accuracy Clock. (line   6)
+* time, high precision:                  Setting and Adjusting the Time.
+                                                              (line  60)
 * timer:                                 Unsafe Features.     (line  87)
 * Timer expired:                         Error Codes.         (line 620)
 * timer, profiling:                      Setting an Alarm.    (line  22)
 * timer, real-time:                      Setting an Alarm.    (line  13)
 * timer, virtual:                        Setting an Alarm.    (line  17)
 * timers, setting:                       Setting an Alarm.    (line  10)
-* timespec:                              Elapsed Time.        (line  45)
-* timeval:                               Elapsed Time.        (line  32)
+* timespec:                              Time Types.          (line  40)
+* timeval:                               Time Types.          (line  61)
 * timing error in signal handling:       Remembering a Signal.
                                                               (line  72)
 * TMPDIR environment variable:           Temporary Files.     (line 147)

@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "9.3.1 20200405")
+(!version  "9.3.1 20200408")
 (!srcdir  "../../gcc/gcc")
 (!languages 11 ada brig c cp d fortran go jit lto objc objcp)
 (!fileslist 208
@@ -20407,23 +20407,23 @@
   nil 0 nil nil )
  
  (!type struct 1224 nil  gc_pointed_to "inline_entry_data"
-  (!srcfileloc  "dwarf2out.c" 23631)
+  (!srcfileloc  "dwarf2out.c" 23642)
   (!fields 4 
    (!pair  "block"
     (!type already_seen 23)
-    (!srcfileloc  "dwarf2out.c" 23623)
+    (!srcfileloc  "dwarf2out.c" 23634)
     nil )
    (!pair  "label_pfx"
     (!type already_seen 11)
-    (!srcfileloc  "dwarf2out.c" 23626)
+    (!srcfileloc  "dwarf2out.c" 23637)
     nil )
    (!pair  "label_num"
     (!type already_seen 2)
-    (!srcfileloc  "dwarf2out.c" 23627)
+    (!srcfileloc  "dwarf2out.c" 23638)
     nil )
    (!pair  "view"
     (!type already_seen 2)
-    (!srcfileloc  "dwarf2out.c" 23630)
+    (!srcfileloc  "dwarf2out.c" 23641)
     nil )
   )
   (!options 
@@ -20432,7 +20432,7 @@
   2047 nil nil )
  
  (!type struct 1225 nil  gc_used "inline_entry_data_hasher"
-  (!srcfileloc  "dwarf2out.c" 23657)
+  (!srcfileloc  "dwarf2out.c" 23668)
   (!fields 0 )
   nil 2047 nil nil )
  
@@ -20441,26 +20441,26 @@
    (!type already_seen 1226)
   )
   gc_pointed_to "hash_table<inline_entry_data_hasher>"
-  (!srcfileloc  "dwarf2out.c" 23657)
+  (!srcfileloc  "dwarf2out.c" 23668)
   (!fields 1 
    (!pair  "inline_entry_data_hasher"
     (!type already_seen 1225)
-    (!srcfileloc  "dwarf2out.c" 23657)
+    (!srcfileloc  "dwarf2out.c" 23668)
     nil )
   )
  )
  
  (!type struct 1228 nil  gc_unused "macinfo_entry_hasher"
-  (!srcfileloc  "dwarf2out.c" 28214)
+  (!srcfileloc  "dwarf2out.c" 28225)
   (!fields 0 )
   nil 2047 nil nil )
  
  (!type user_struct 1229 nil  gc_unused "hash_table<macinfo_entry_hasher>"
-  (!srcfileloc  "dwarf2out.c" 28214)
+  (!srcfileloc  "dwarf2out.c" 28225)
   (!fields 1 
    (!pair  "macinfo_entry_hasher"
     (!type already_seen 1228)
-    (!srcfileloc  "dwarf2out.c" 28214)
+    (!srcfileloc  "dwarf2out.c" 28225)
     nil )
   )
  )
@@ -20470,16 +20470,16 @@
   nil 0 nil nil )
  
  (!type struct 1231 nil  gc_unused "loc_list_hasher"
-  (!srcfileloc  "dwarf2out.c" 31140)
+  (!srcfileloc  "dwarf2out.c" 31151)
   (!fields 0 )
   nil 2047 nil nil )
  
  (!type user_struct 1232 nil  gc_unused "hash_table<loc_list_hasher>"
-  (!srcfileloc  "dwarf2out.c" 31140)
+  (!srcfileloc  "dwarf2out.c" 31151)
   (!fields 1 
    (!pair  "loc_list_hasher"
     (!type already_seen 1231)
-    (!srcfileloc  "dwarf2out.c" 31140)
+    (!srcfileloc  "dwarf2out.c" 31151)
     nil )
   )
  )
@@ -21809,7 +21809,7 @@
   nil 0 nil nil )
  
  (!type struct 1392 nil  gc_used "tm_clone_hasher"
-  (!srcfileloc  "varasm.c" 6039)
+  (!srcfileloc  "varasm.c" 6059)
   (!fields 0 )
   nil 2047 nil nil )
  
@@ -21818,11 +21818,11 @@
    (!type already_seen 1393)
   )
   gc_pointed_to "hash_table<tm_clone_hasher>"
-  (!srcfileloc  "varasm.c" 6039)
+  (!srcfileloc  "varasm.c" 6059)
   (!fields 1 
    (!pair  "tm_clone_hasher"
     (!type already_seen 1392)
-    (!srcfileloc  "varasm.c" 6039)
+    (!srcfileloc  "varasm.c" 6059)
     nil )
   )
  )
@@ -24123,7 +24123,7 @@
   (!fields 0 )
   nil 0 nil nil )
  
- (!type struct 1743 nil  gc_unused "anonymous:../../gcc/gcc/c/c-parser.c:6954"nil 
+ (!type struct 1743 nil  gc_unused "anonymous:../../gcc/gcc/c/c-parser.c:6961"nil 
   (!fields 0 )
   nil 0 nil nil )
  
@@ -24834,7 +24834,7 @@
    (!type already_seen 1794)
   )
   gc_pointed_to "cp_parser"
-  (!srcfileloc  "cp/parser.c" 40818)
+  (!srcfileloc  "cp/parser.c" 40810)
   (!fields 37 
    (!pair  "lexer"
     (!type already_seen 1780)
@@ -25533,15 +25533,15 @@
   nil 0 nil nil )
  
  (!type struct 1877 nil  gc_pointed_to "constr_entry"
-  (!srcfileloc  "cp/pt.c" 28150)
+  (!srcfileloc  "cp/pt.c" 28152)
   (!fields 2 
    (!pair  "decl"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28148)
+    (!srcfileloc  "cp/pt.c" 28150)
     nil )
    (!pair  "ci"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28149)
+    (!srcfileloc  "cp/pt.c" 28151)
     nil )
   )
   (!options 
@@ -25550,7 +25550,7 @@
   1032 nil nil )
  
  (!type struct 1878 nil  gc_used "constr_hasher"
-  (!srcfileloc  "cp/pt.c" 28173)
+  (!srcfileloc  "cp/pt.c" 28175)
   (!fields 0 )
   nil 1032 nil nil )
  
@@ -25559,29 +25559,29 @@
    (!type already_seen 1879)
   )
   gc_pointed_to "hash_table<constr_hasher>"
-  (!srcfileloc  "cp/pt.c" 28173)
+  (!srcfileloc  "cp/pt.c" 28175)
   (!fields 1 
    (!pair  "constr_hasher"
     (!type already_seen 1878)
-    (!srcfileloc  "cp/pt.c" 28173)
+    (!srcfileloc  "cp/pt.c" 28175)
     nil )
   )
  )
  
  (!type struct 1881 nil  gc_pointed_to "constraint_sat_entry"
-  (!srcfileloc  "cp/pt.c" 28240)
+  (!srcfileloc  "cp/pt.c" 28242)
   (!fields 3 
    (!pair  "ci"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28237)
+    (!srcfileloc  "cp/pt.c" 28239)
     nil )
    (!pair  "args"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28238)
+    (!srcfileloc  "cp/pt.c" 28240)
     nil )
    (!pair  "result"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28239)
+    (!srcfileloc  "cp/pt.c" 28241)
     nil )
   )
   (!options 
@@ -25590,24 +25590,24 @@
   1032 nil nil )
  
  (!type struct 1882 nil  gc_used "constraint_sat_hasher"
-  (!srcfileloc  "cp/pt.c" 28285)
+  (!srcfileloc  "cp/pt.c" 28287)
   (!fields 0 )
   nil 1032 nil nil )
  
  (!type struct 1883 nil  gc_pointed_to "concept_spec_entry"
-  (!srcfileloc  "cp/pt.c" 28265)
+  (!srcfileloc  "cp/pt.c" 28267)
   (!fields 3 
    (!pair  "tmpl"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28262)
+    (!srcfileloc  "cp/pt.c" 28264)
     nil )
    (!pair  "args"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28263)
+    (!srcfileloc  "cp/pt.c" 28265)
     nil )
    (!pair  "result"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28264)
+    (!srcfileloc  "cp/pt.c" 28266)
     nil )
   )
   (!options 
@@ -25616,7 +25616,7 @@
   1032 nil nil )
  
  (!type struct 1884 nil  gc_used "concept_spec_hasher"
-  (!srcfileloc  "cp/pt.c" 28286)
+  (!srcfileloc  "cp/pt.c" 28288)
   (!fields 0 )
   nil 1032 nil nil )
  
@@ -25625,11 +25625,11 @@
    (!type already_seen 1885)
   )
   gc_pointed_to "hash_table<constraint_sat_hasher>"
-  (!srcfileloc  "cp/pt.c" 28285)
+  (!srcfileloc  "cp/pt.c" 28287)
   (!fields 1 
    (!pair  "constraint_sat_hasher"
     (!type already_seen 1882)
-    (!srcfileloc  "cp/pt.c" 28285)
+    (!srcfileloc  "cp/pt.c" 28287)
     nil )
   )
  )
@@ -25639,29 +25639,29 @@
    (!type already_seen 1887)
   )
   gc_pointed_to "hash_table<concept_spec_hasher>"
-  (!srcfileloc  "cp/pt.c" 28286)
+  (!srcfileloc  "cp/pt.c" 28288)
   (!fields 1 
    (!pair  "concept_spec_hasher"
     (!type already_seen 1884)
-    (!srcfileloc  "cp/pt.c" 28286)
+    (!srcfileloc  "cp/pt.c" 28288)
     nil )
   )
  )
  
  (!type struct 1889 nil  gc_pointed_to "subsumption_entry"
-  (!srcfileloc  "cp/pt.c" 28408)
+  (!srcfileloc  "cp/pt.c" 28410)
   (!fields 3 
    (!pair  "t1"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28405)
+    (!srcfileloc  "cp/pt.c" 28407)
     nil )
    (!pair  "t2"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28406)
+    (!srcfileloc  "cp/pt.c" 28408)
     nil )
    (!pair  "result"
     (!type already_seen 2)
-    (!srcfileloc  "cp/pt.c" 28407)
+    (!srcfileloc  "cp/pt.c" 28409)
     nil )
   )
   (!options 
@@ -25670,7 +25670,7 @@
   1032 nil nil )
  
  (!type struct 1890 nil  gc_used "subsumption_hasher"
-  (!srcfileloc  "cp/pt.c" 28428)
+  (!srcfileloc  "cp/pt.c" 28430)
   (!fields 0 )
   nil 1032 nil nil )
  
@@ -25679,11 +25679,11 @@
    (!type already_seen 1891)
   )
   gc_pointed_to "hash_table<subsumption_hasher>"
-  (!srcfileloc  "cp/pt.c" 28428)
+  (!srcfileloc  "cp/pt.c" 28430)
   (!fields 1 
    (!pair  "subsumption_hasher"
     (!type already_seen 1890)
-    (!srcfileloc  "cp/pt.c" 28428)
+    (!srcfileloc  "cp/pt.c" 28430)
     nil )
   )
  )
@@ -26863,35 +26863,35 @@
   nil )
  (!pair  "subsumption_hasher"
   (!type already_seen 1890)
-  (!srcfileloc  "cp/pt.c" 28428)
+  (!srcfileloc  "cp/pt.c" 28430)
   nil )
  (!pair  "hash_table<subsumption_hasher>"
   (!type already_seen 1891)
-  (!srcfileloc  "cp/pt.c" 28428)
+  (!srcfileloc  "cp/pt.c" 28430)
   nil )
  (!pair  "concept_spec_hasher"
   (!type already_seen 1884)
-  (!srcfileloc  "cp/pt.c" 28286)
+  (!srcfileloc  "cp/pt.c" 28288)
   nil )
  (!pair  "hash_table<concept_spec_hasher>"
   (!type already_seen 1887)
-  (!srcfileloc  "cp/pt.c" 28286)
+  (!srcfileloc  "cp/pt.c" 28288)
   nil )
  (!pair  "constraint_sat_hasher"
   (!type already_seen 1882)
-  (!srcfileloc  "cp/pt.c" 28285)
+  (!srcfileloc  "cp/pt.c" 28287)
   nil )
  (!pair  "hash_table<constraint_sat_hasher>"
   (!type already_seen 1885)
-  (!srcfileloc  "cp/pt.c" 28285)
+  (!srcfileloc  "cp/pt.c" 28287)
   nil )
  (!pair  "constr_hasher"
   (!type already_seen 1878)
-  (!srcfileloc  "cp/pt.c" 28173)
+  (!srcfileloc  "cp/pt.c" 28175)
   nil )
  (!pair  "hash_table<constr_hasher>"
   (!type already_seen 1879)
-  (!srcfileloc  "cp/pt.c" 28173)
+  (!srcfileloc  "cp/pt.c" 28175)
   nil )
  (!pair  "pending_template"
   (!type already_seen 1864)
@@ -26915,7 +26915,7 @@
   nil )
  (!pair  "cp_parser"
   (!type already_seen 1794)
-  (!srcfileloc  "cp/parser.c" 40818)
+  (!srcfileloc  "cp/parser.c" 40810)
   nil )
  (!pair  "cp_parser_expression_stack"
   (!type array 2003 nil  gc_unused "NUM_PREC_VALUES" 
@@ -27325,7 +27325,7 @@
   nil )
  (!pair  "c_expr_t"
   (!type already_seen 1678)
-  (!srcfileloc  "c/c-tree.h" 174)
+  (!srcfileloc  "c/c-tree.h" 178)
   nil )
  (!pair  "builtin_type"
   (!type already_seen 2)
@@ -27809,11 +27809,11 @@
   nil )
  (!pair  "tm_clone_hasher"
   (!type already_seen 1392)
-  (!srcfileloc  "varasm.c" 6039)
+  (!srcfileloc  "varasm.c" 6059)
   nil )
  (!pair  "hash_table<tm_clone_hasher>"
   (!type already_seen 1393)
-  (!srcfileloc  "varasm.c" 6039)
+  (!srcfileloc  "varasm.c" 6059)
   nil )
  (!pair  "const_rtx_desc_hasher"
   (!type already_seen 973)
@@ -28157,35 +28157,35 @@
   nil )
  (!pair  "loc_list_hash_type"
   (!type already_seen 1232)
-  (!srcfileloc  "dwarf2out.c" 31140)
+  (!srcfileloc  "dwarf2out.c" 31151)
   nil )
  (!pair  "loc_list_hasher"
   (!type already_seen 1231)
-  (!srcfileloc  "dwarf2out.c" 31140)
+  (!srcfileloc  "dwarf2out.c" 31151)
   nil )
  (!pair  "hash_table<loc_list_hasher>"
   (!type already_seen 1232)
-  (!srcfileloc  "dwarf2out.c" 31140)
+  (!srcfileloc  "dwarf2out.c" 31151)
   nil )
  (!pair  "macinfo_hash_type"
   (!type already_seen 1229)
-  (!srcfileloc  "dwarf2out.c" 28214)
+  (!srcfileloc  "dwarf2out.c" 28225)
   nil )
  (!pair  "macinfo_entry_hasher"
   (!type already_seen 1228)
-  (!srcfileloc  "dwarf2out.c" 28214)
+  (!srcfileloc  "dwarf2out.c" 28225)
   nil )
  (!pair  "hash_table<macinfo_entry_hasher>"
   (!type already_seen 1229)
-  (!srcfileloc  "dwarf2out.c" 28214)
+  (!srcfileloc  "dwarf2out.c" 28225)
   nil )
  (!pair  "inline_entry_data_hasher"
   (!type already_seen 1225)
-  (!srcfileloc  "dwarf2out.c" 23657)
+  (!srcfileloc  "dwarf2out.c" 23668)
   nil )
  (!pair  "hash_table<inline_entry_data_hasher>"
   (!type already_seen 1226)
-  (!srcfileloc  "dwarf2out.c" 23657)
+  (!srcfileloc  "dwarf2out.c" 23668)
   nil )
  (!pair  "external_ref_hash_type"
   (!type already_seen 1218)
@@ -30772,23 +30772,23 @@
   nil )
  (!pair  "subsumption_table"
   (!type already_seen 1892)
-  (!srcfileloc  "cp/pt.c" 28428)
+  (!srcfileloc  "cp/pt.c" 28430)
   nil )
  (!pair  "concept_expansions"
   (!type already_seen 1888)
-  (!srcfileloc  "cp/pt.c" 28341)
+  (!srcfileloc  "cp/pt.c" 28343)
   nil )
  (!pair  "concept_memos"
   (!type already_seen 1888)
-  (!srcfileloc  "cp/pt.c" 28286)
+  (!srcfileloc  "cp/pt.c" 28288)
   nil )
  (!pair  "constraint_memos"
   (!type already_seen 1886)
-  (!srcfileloc  "cp/pt.c" 28285)
+  (!srcfileloc  "cp/pt.c" 28287)
   nil )
  (!pair  "decl_constraints"
   (!type already_seen 1880)
-  (!srcfileloc  "cp/pt.c" 28173)
+  (!srcfileloc  "cp/pt.c" 28175)
   nil )
  (!pair  "explicit_specifier_map"
   (!type already_seen 910)
@@ -30870,11 +30870,11 @@
   nil )
  (!pair  "generic_parm_count"
   (!type already_seen 2)
-  (!srcfileloc  "cp/parser.c" 41291)
+  (!srcfileloc  "cp/parser.c" 41283)
   nil )
  (!pair  "the_parser"
   (!type already_seen 1795)
-  (!srcfileloc  "cp/parser.c" 40818)
+  (!srcfileloc  "cp/parser.c" 40810)
   nil )
  (!pair  "cp_parser_context_free_list"
   (!type already_seen 1787)
@@ -31055,7 +31055,7 @@
   nil )
  (!pair  "fold_cache"
   (!type already_seen 441)
-  (!srcfileloc  "cp/cp-gimplify.c" 2285)
+  (!srcfileloc  "cp/cp-gimplify.c" 2290)
   (!options 
    (!option deletable string  "")
   )
@@ -31258,7 +31258,7 @@
   nil )
  (!pair  "ext_block"
   (!type already_seen 23)
-  (!srcfileloc  "c/c-decl.c" 11530)
+  (!srcfileloc  "c/c-decl.c" 11534)
   nil )
  (!pair  "last_structptr_types"
   (!type array 2041 nil  gc_used "6" 
@@ -31762,22 +31762,22 @@
   nil )
  (!pair  "elf_fini_array_section"
   (!type already_seen 263)
-  (!srcfileloc  "varasm.c" 8006)
+  (!srcfileloc  "varasm.c" 8026)
   nil )
  (!pair  "elf_init_array_section"
   (!type already_seen 263)
-  (!srcfileloc  "varasm.c" 8005)
+  (!srcfileloc  "varasm.c" 8025)
   nil )
  (!pair  "tm_clone_hash"
   (!type already_seen 1394)
-  (!srcfileloc  "varasm.c" 6039)
+  (!srcfileloc  "varasm.c" 6059)
   (!options 
    (!option cache string  "")
   )
  )
  (!pair  "weakref_targets"
   (!type already_seen 23)
-  (!srcfileloc  "varasm.c" 5711)
+  (!srcfileloc  "varasm.c" 5731)
   nil )
  (!pair  "const_desc_htab"
   (!type already_seen 1389)
@@ -32168,7 +32168,7 @@
   nil )
  (!pair  "inline_entry_data_table"
   (!type already_seen 1227)
-  (!srcfileloc  "dwarf2out.c" 23657)
+  (!srcfileloc  "dwarf2out.c" 23668)
   nil )
  (!pair  "external_die_map"
   (!type already_seen 1212)

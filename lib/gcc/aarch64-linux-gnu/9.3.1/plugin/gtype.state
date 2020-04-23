@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "9.3.1 20200421")
+(!version  "9.3.1 20200423")
 (!srcdir  "../../gcc/gcc")
 (!languages 11 ada brig c cp d fortran go jit lto objc objcp)
 (!fileslist 208
@@ -1500,19 +1500,19 @@
                                                          (!fields 4 
                                                           (!pair  "binfo"
                                                            (!type already_seen 23)
-                                                           (!srcfileloc  "cp/cp-tree.h" 6943)
+                                                           (!srcfileloc  "cp/cp-tree.h" 6944)
                                                            nil )
                                                           (!pair  "decl"
                                                            (!type already_seen 23)
-                                                           (!srcfileloc  "cp/cp-tree.h" 6945)
+                                                           (!srcfileloc  "cp/cp-tree.h" 6946)
                                                            nil )
                                                           (!pair  "diag_decl"
                                                            (!type already_seen 23)
-                                                           (!srcfileloc  "cp/cp-tree.h" 6947)
+                                                           (!srcfileloc  "cp/cp-tree.h" 6948)
                                                            nil )
                                                           (!pair  "loc"
                                                            (!type already_seen 2)
-                                                           (!srcfileloc  "cp/cp-tree.h" 6949)
+                                                           (!srcfileloc  "cp/cp-tree.h" 6950)
                                                            nil )
                                                          )
                                                          nil 1032 nil nil )
@@ -24580,7 +24580,7 @@
    (!type already_seen 1770)
   )
   gc_pointed_to "tinst_level"
-  (!srcfileloc  "cp/pt.c" 9068)
+  (!srcfileloc  "cp/pt.c" 9097)
   (!fields 6 
    (!pair  "next"
     (!type already_seen 1771)
@@ -25448,7 +25448,7 @@
    (!type already_seen 1864)
   )
   gc_pointed_to "pending_template"
-  (!srcfileloc  "cp/pt.c" 9077)
+  (!srcfileloc  "cp/pt.c" 9106)
   (!fields 2 
    (!pair  "next"
     (!type already_seen 1865)
@@ -25533,15 +25533,15 @@
   nil 0 nil nil )
  
  (!type struct 1877 nil  gc_pointed_to "constr_entry"
-  (!srcfileloc  "cp/pt.c" 28153)
+  (!srcfileloc  "cp/pt.c" 28182)
   (!fields 2 
    (!pair  "decl"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28151)
+    (!srcfileloc  "cp/pt.c" 28180)
     nil )
    (!pair  "ci"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28152)
+    (!srcfileloc  "cp/pt.c" 28181)
     nil )
   )
   (!options 
@@ -25550,7 +25550,7 @@
   1032 nil nil )
  
  (!type struct 1878 nil  gc_used "constr_hasher"
-  (!srcfileloc  "cp/pt.c" 28176)
+  (!srcfileloc  "cp/pt.c" 28205)
   (!fields 0 )
   nil 1032 nil nil )
  
@@ -25559,29 +25559,29 @@
    (!type already_seen 1879)
   )
   gc_pointed_to "hash_table<constr_hasher>"
-  (!srcfileloc  "cp/pt.c" 28176)
+  (!srcfileloc  "cp/pt.c" 28205)
   (!fields 1 
    (!pair  "constr_hasher"
     (!type already_seen 1878)
-    (!srcfileloc  "cp/pt.c" 28176)
+    (!srcfileloc  "cp/pt.c" 28205)
     nil )
   )
  )
  
  (!type struct 1881 nil  gc_pointed_to "constraint_sat_entry"
-  (!srcfileloc  "cp/pt.c" 28243)
+  (!srcfileloc  "cp/pt.c" 28272)
   (!fields 3 
    (!pair  "ci"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28240)
+    (!srcfileloc  "cp/pt.c" 28269)
     nil )
    (!pair  "args"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28241)
+    (!srcfileloc  "cp/pt.c" 28270)
     nil )
    (!pair  "result"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28242)
+    (!srcfileloc  "cp/pt.c" 28271)
     nil )
   )
   (!options 
@@ -25590,24 +25590,24 @@
   1032 nil nil )
  
  (!type struct 1882 nil  gc_used "constraint_sat_hasher"
-  (!srcfileloc  "cp/pt.c" 28288)
+  (!srcfileloc  "cp/pt.c" 28317)
   (!fields 0 )
   nil 1032 nil nil )
  
  (!type struct 1883 nil  gc_pointed_to "concept_spec_entry"
-  (!srcfileloc  "cp/pt.c" 28268)
+  (!srcfileloc  "cp/pt.c" 28297)
   (!fields 3 
    (!pair  "tmpl"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28265)
+    (!srcfileloc  "cp/pt.c" 28294)
     nil )
    (!pair  "args"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28266)
+    (!srcfileloc  "cp/pt.c" 28295)
     nil )
    (!pair  "result"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28267)
+    (!srcfileloc  "cp/pt.c" 28296)
     nil )
   )
   (!options 
@@ -25616,7 +25616,7 @@
   1032 nil nil )
  
  (!type struct 1884 nil  gc_used "concept_spec_hasher"
-  (!srcfileloc  "cp/pt.c" 28289)
+  (!srcfileloc  "cp/pt.c" 28318)
   (!fields 0 )
   nil 1032 nil nil )
  
@@ -25625,11 +25625,11 @@
    (!type already_seen 1885)
   )
   gc_pointed_to "hash_table<constraint_sat_hasher>"
-  (!srcfileloc  "cp/pt.c" 28288)
+  (!srcfileloc  "cp/pt.c" 28317)
   (!fields 1 
    (!pair  "constraint_sat_hasher"
     (!type already_seen 1882)
-    (!srcfileloc  "cp/pt.c" 28288)
+    (!srcfileloc  "cp/pt.c" 28317)
     nil )
   )
  )
@@ -25639,29 +25639,29 @@
    (!type already_seen 1887)
   )
   gc_pointed_to "hash_table<concept_spec_hasher>"
-  (!srcfileloc  "cp/pt.c" 28289)
+  (!srcfileloc  "cp/pt.c" 28318)
   (!fields 1 
    (!pair  "concept_spec_hasher"
     (!type already_seen 1884)
-    (!srcfileloc  "cp/pt.c" 28289)
+    (!srcfileloc  "cp/pt.c" 28318)
     nil )
   )
  )
  
  (!type struct 1889 nil  gc_pointed_to "subsumption_entry"
-  (!srcfileloc  "cp/pt.c" 28411)
+  (!srcfileloc  "cp/pt.c" 28440)
   (!fields 3 
    (!pair  "t1"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28408)
+    (!srcfileloc  "cp/pt.c" 28437)
     nil )
    (!pair  "t2"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28409)
+    (!srcfileloc  "cp/pt.c" 28438)
     nil )
    (!pair  "result"
     (!type already_seen 2)
-    (!srcfileloc  "cp/pt.c" 28410)
+    (!srcfileloc  "cp/pt.c" 28439)
     nil )
   )
   (!options 
@@ -25670,7 +25670,7 @@
   1032 nil nil )
  
  (!type struct 1890 nil  gc_used "subsumption_hasher"
-  (!srcfileloc  "cp/pt.c" 28431)
+  (!srcfileloc  "cp/pt.c" 28460)
   (!fields 0 )
   nil 1032 nil nil )
  
@@ -25679,11 +25679,11 @@
    (!type already_seen 1891)
   )
   gc_pointed_to "hash_table<subsumption_hasher>"
-  (!srcfileloc  "cp/pt.c" 28431)
+  (!srcfileloc  "cp/pt.c" 28460)
   (!fields 1 
    (!pair  "subsumption_hasher"
     (!type already_seen 1890)
-    (!srcfileloc  "cp/pt.c" 28431)
+    (!srcfileloc  "cp/pt.c" 28460)
     nil )
   )
  )
@@ -26863,43 +26863,43 @@
   nil )
  (!pair  "subsumption_hasher"
   (!type already_seen 1890)
-  (!srcfileloc  "cp/pt.c" 28431)
+  (!srcfileloc  "cp/pt.c" 28460)
   nil )
  (!pair  "hash_table<subsumption_hasher>"
   (!type already_seen 1891)
-  (!srcfileloc  "cp/pt.c" 28431)
+  (!srcfileloc  "cp/pt.c" 28460)
   nil )
  (!pair  "concept_spec_hasher"
   (!type already_seen 1884)
-  (!srcfileloc  "cp/pt.c" 28289)
+  (!srcfileloc  "cp/pt.c" 28318)
   nil )
  (!pair  "hash_table<concept_spec_hasher>"
   (!type already_seen 1887)
-  (!srcfileloc  "cp/pt.c" 28289)
+  (!srcfileloc  "cp/pt.c" 28318)
   nil )
  (!pair  "constraint_sat_hasher"
   (!type already_seen 1882)
-  (!srcfileloc  "cp/pt.c" 28288)
+  (!srcfileloc  "cp/pt.c" 28317)
   nil )
  (!pair  "hash_table<constraint_sat_hasher>"
   (!type already_seen 1885)
-  (!srcfileloc  "cp/pt.c" 28288)
+  (!srcfileloc  "cp/pt.c" 28317)
   nil )
  (!pair  "constr_hasher"
   (!type already_seen 1878)
-  (!srcfileloc  "cp/pt.c" 28176)
+  (!srcfileloc  "cp/pt.c" 28205)
   nil )
  (!pair  "hash_table<constr_hasher>"
   (!type already_seen 1879)
-  (!srcfileloc  "cp/pt.c" 28176)
+  (!srcfileloc  "cp/pt.c" 28205)
   nil )
  (!pair  "pending_template"
   (!type already_seen 1864)
-  (!srcfileloc  "cp/pt.c" 9077)
+  (!srcfileloc  "cp/pt.c" 9106)
   nil )
  (!pair  "tinst_level"
   (!type already_seen 1770)
-  (!srcfileloc  "cp/pt.c" 9068)
+  (!srcfileloc  "cp/pt.c" 9097)
   nil )
  (!pair  "spec_hasher"
   (!type already_seen 1867)
@@ -29698,7 +29698,7 @@
   (!srcfileloc  "gengtype.c" 5191)
   nil )
 )
-(!variables 695
+(!variables 696
  (!pair  "objc_eh_personality_decl"
   (!type already_seen 23)
   (!srcfileloc  "objc/objc-next-runtime-abi-02.c" 3607)
@@ -30772,70 +30772,74 @@
   nil )
  (!pair  "subsumption_table"
   (!type already_seen 1892)
-  (!srcfileloc  "cp/pt.c" 28431)
+  (!srcfileloc  "cp/pt.c" 28460)
   nil )
  (!pair  "concept_expansions"
   (!type already_seen 1888)
-  (!srcfileloc  "cp/pt.c" 28344)
+  (!srcfileloc  "cp/pt.c" 28373)
   nil )
  (!pair  "concept_memos"
   (!type already_seen 1888)
-  (!srcfileloc  "cp/pt.c" 28289)
+  (!srcfileloc  "cp/pt.c" 28318)
   nil )
  (!pair  "constraint_memos"
   (!type already_seen 1886)
-  (!srcfileloc  "cp/pt.c" 28288)
+  (!srcfileloc  "cp/pt.c" 28317)
   nil )
  (!pair  "decl_constraints"
   (!type already_seen 1880)
-  (!srcfileloc  "cp/pt.c" 28176)
+  (!srcfileloc  "cp/pt.c" 28205)
   nil )
  (!pair  "explicit_specifier_map"
   (!type already_seen 910)
-  (!srcfileloc  "cp/pt.c" 12936)
+  (!srcfileloc  "cp/pt.c" 12965)
   (!options 
    (!option cache string  "")
   )
  )
  (!pair  "defarg_inst"
   (!type already_seen 910)
-  (!srcfileloc  "cp/pt.c" 12825)
+  (!srcfileloc  "cp/pt.c" 12854)
   (!options 
    (!option cache string  "")
   )
  )
  (!pair  "last_error_tinst_level"
   (!type already_seen 1771)
-  (!srcfileloc  "cp/pt.c" 10267)
+  (!srcfileloc  "cp/pt.c" 10296)
   nil )
  (!pair  "pending_template_freelist_head"
   (!type already_seen 1865)
-  (!srcfileloc  "cp/pt.c" 9077)
+  (!srcfileloc  "cp/pt.c" 9106)
   (!options 
    (!option deletable string  "")
   )
  )
  (!pair  "tinst_level_freelist_head"
   (!type already_seen 1771)
-  (!srcfileloc  "cp/pt.c" 9068)
+  (!srcfileloc  "cp/pt.c" 9097)
   (!options 
    (!option deletable string  "")
   )
  )
  (!pair  "tree_list_freelist_head"
   (!type already_seen 23)
-  (!srcfileloc  "cp/pt.c" 9059)
+  (!srcfileloc  "cp/pt.c" 9088)
   (!options 
    (!option deletable string  "")
   )
  )
  (!pair  "defaulted_ttp_cache"
   (!type already_seen 441)
-  (!srcfileloc  "cp/pt.c" 7395)
+  (!srcfileloc  "cp/pt.c" 7424)
   (!options 
    (!option deletable string  "")
   )
  )
+ (!pair  "tparm_obj_values"
+  (!type already_seen 441)
+  (!srcfileloc  "cp/pt.c" 6759)
+  nil )
  (!pair  "canonical_template_parms"
   (!type already_seen 96)
   (!srcfileloc  "cp/pt.c" 121)
@@ -31018,11 +31022,11 @@
   nil )
  (!pair  "start_cleanup_cnt"
   (!type already_seen 2)
-  (!srcfileloc  "cp/decl.c" 8131)
+  (!srcfileloc  "cp/decl.c" 8107)
   nil )
  (!pair  "decomp_type_table"
   (!type already_seen 910)
-  (!srcfileloc  "cp/decl.c" 7611)
+  (!srcfileloc  "cp/decl.c" 7587)
   (!options 
    (!option cache string  "")
   )
@@ -31104,7 +31108,7 @@
   nil )
  (!pair  "unemitted_tinfo_decls"
   (!type already_seen 96)
-  (!srcfileloc  "cp/cp-tree.h" 6886)
+  (!srcfileloc  "cp/cp-tree.h" 6887)
   nil )
  (!pair  "ovl_op_alternate"
   (!type array 2033 nil  gc_used "OVL_OP_MAX" 

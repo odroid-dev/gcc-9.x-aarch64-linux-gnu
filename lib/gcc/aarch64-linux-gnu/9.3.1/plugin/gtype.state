@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "9.3.1 20200423")
+(!version  "9.3.1 20200510")
 (!srcdir  "../../gcc/gcc")
 (!languages 11 ada brig c cp d fortran go jit lto objc objcp)
 (!fileslist 208
@@ -1500,19 +1500,19 @@
                                                          (!fields 4 
                                                           (!pair  "binfo"
                                                            (!type already_seen 23)
-                                                           (!srcfileloc  "cp/cp-tree.h" 6944)
+                                                           (!srcfileloc  "cp/cp-tree.h" 6945)
                                                            nil )
                                                           (!pair  "decl"
                                                            (!type already_seen 23)
-                                                           (!srcfileloc  "cp/cp-tree.h" 6946)
+                                                           (!srcfileloc  "cp/cp-tree.h" 6947)
                                                            nil )
                                                           (!pair  "diag_decl"
                                                            (!type already_seen 23)
-                                                           (!srcfileloc  "cp/cp-tree.h" 6948)
+                                                           (!srcfileloc  "cp/cp-tree.h" 6949)
                                                            nil )
                                                           (!pair  "loc"
                                                            (!type already_seen 2)
-                                                           (!srcfileloc  "cp/cp-tree.h" 6950)
+                                                           (!srcfileloc  "cp/cp-tree.h" 6951)
                                                            nil )
                                                          )
                                                          nil 1032 nil nil )
@@ -31108,7 +31108,7 @@
   nil )
  (!pair  "unemitted_tinfo_decls"
   (!type already_seen 96)
-  (!srcfileloc  "cp/cp-tree.h" 6887)
+  (!srcfileloc  "cp/cp-tree.h" 6888)
   nil )
  (!pair  "ovl_op_alternate"
   (!type array 2033 nil  gc_used "OVL_OP_MAX" 
@@ -31758,7 +31758,7 @@
  )
  (!pair  "addr_list"
   (!type already_seen 269)
-  (!srcfileloc  "tree-ssa-loop-ivopts.c" 2608)
+  (!srcfileloc  "tree-ssa-loop-ivopts.c" 2611)
   nil )
  (!pair  "mem_addr_template_list"
   (!type already_seen 1415)

@@ -129,7 +129,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2020-04-23" "gcc-9.3.1" "GNU"
+.TH GCC 1 "2020-05-10" "gcc-9.3.1" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -27652,9 +27652,9 @@ Note that \fB\-mcmodel=large\fR is incompatible with
 \&\fB\-mindirect\-branch=thunk\-extern\fR since the thunk function may
 not be reachable in the large code model.
 .Sp
-Note that \fB\-mindirect\-branch=thunk\-extern\fR is incompatible with
-\&\fB\-fcf\-protection=branch\fR since the external thunk cannot be modified
-to disable control-flow check.
+Note that \fB\-mindirect\-branch=thunk\-extern\fR is compatible with
+\&\fB\-fcf\-protection=branch\fR since the external thunk can be made
+to enable control-flow check.
 .IP "\fB\-mfunction\-return=\fR\fIchoice\fR" 4
 .IX Item "-mfunction-return=choice"
 Convert function return with \fIchoice\fR.  The default is \fBkeep\fR,
@@ -27664,6 +27664,10 @@ return to inlined call and return thunk.  \fBthunk-extern\fR converts
 function return to external call and return thunk provided in a separate
 object file.  You can control this behavior for a specific function by
 using the function attribute \f(CW\*(C`function_return\*(C'\fR.
+.Sp
+Note that \fB\-mindirect\-return=thunk\-extern\fR is compatible with
+\&\fB\-fcf\-protection=branch\fR since the external thunk can be made
+to enable control-flow check.
 .Sp
 Note that \fB\-mcmodel=large\fR is incompatible with
 \&\fB\-mfunction\-return=thunk\fR and
